@@ -25,11 +25,22 @@
 
 @font-face {
     font-family: "inter";
+    src: url("./assets/fonts/inter/Inter-SemiBold.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "inter";
     src: url("./assets/fonts/inter/Inter-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
 
+
+:root{
+    --text-color:#101010;
+}
 
 
 // $custom-typography: mat.define-typography-config($font-family:'"inter","Helvetica Neue", sans-serif');

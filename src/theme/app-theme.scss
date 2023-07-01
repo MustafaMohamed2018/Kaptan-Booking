@@ -103,11 +103,15 @@ $bluesky-theme: mat.define-light-theme((
 
   typography:
     mat.define-typography-config(
-        $font-family: '"inter","Helvetica Neue", sans-serif',
+      $font-family: '"inter","Helvetica Neue", sans-serif',
     ),
     density: 0,
 
 ));
 @include mat.all-component-themes($bluesky-theme);
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: "inter","Helvetica Neue", sans-serif, arial; }
+
+

@@ -3,15 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { IntroComponent } from './intro/intro.component';
+import { FirstStepComponent } from './first-step/first-step.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    IntroComponent
+    IntroComponent,
+    FirstStepComponent
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class PagesModule { }
