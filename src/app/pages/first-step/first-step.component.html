@@ -1,17 +1,117 @@
-<form action="">
-    <mat-radio-group name="flavors" color="primary">
+<form [formGroup]="formGroup">
+    <mat-button-toggle-group class="type" formControlName="type" (change)="changeType($event.value)">
+        <mat-button-toggle value="down">
+            <div class="content">
+                <div class="d-flex justify-content-between align-items-center">
+                    <mat-icon svgIcon="plan-down"></mat-icon>
+                    <span class="check-cont">
+                        <mat-icon>
+                            check
+                        </mat-icon>
+                    </span>
+                </div>
+                <span class="text">
+                    From Airport
+                </span>
+            </div>
+        </mat-button-toggle>
+
+        <span style="width: 16px;"></span>
+
+        <mat-button-toggle value="up">
+            <div class="content">
+                <div class="d-flex justify-content-between align-items-center">
+                    <mat-icon svgIcon="plan-up"></mat-icon>
+                    <span class="check-cont">
+                        <mat-icon>
+                            check
+                        </mat-icon>
+                    </span>
+                </div>
+                <span class="text">
+                    To Airport
+                </span>
+            </div>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <div>
+        <label class="d-block">
+            Select airport
+        </label>
+        <mat-button-toggle-group formControlName="airport" class="row-btns" >
+            <mat-button-toggle value="bold">
+                <div class="content">
+                    <span class="check-cont">
+                        <mat-icon>
+                            check
+                        </mat-icon>
+                    </span>
+                    <p>
+                        Istanbul Airport
+                    </p>
+                </div>
+            </mat-button-toggle>
+            <mat-button-toggle value="bold">
+                <div class="content">
+                    <span class="check-cont">
+                        <mat-icon>
+                            check
+                        </mat-icon>
+                    </span>
+                    <p>
+                        Sabiha Airport
+                    </p>
+                </div>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div class="mb-3" *ngIf="formGroup.controls['type'].value == 'down' ">
+        <label class="d-flex align-items-center input-label" for="flight">
+            <mat-icon>
+                flight
+            </mat-icon>
+            Trip Number
+        </label>
+        <input formControlName="tripNumber" type="text" id="flight">
+    </div>
+
+    <div class="mb-3">
+        <label class="d-flex align-items-center input-label" for="Location">
+            <mat-icon>
+                location_on
+            </mat-icon>
+            Delivery Location
+        </label>
+        <input formControlName="deliveryLocation" type="text" id="Location">
+    </div>
+
+    <button mat-raised-button color="primary">
+        Explore Cars & Prices
+    </button>
+    <!-- <mat-radio-group name="flavors" color="primary">
         <mat-radio-button value="vanilla">
             <div class="d-flex justify-content-between align-items-center">
                 <mat-icon svgIcon="plan-up"></mat-icon>
-                <span>
-                    <mat-icon>
-                        check
-                    </mat-icon>
-                </span>
+                <mat-icon>
+                    check
+                </mat-icon>
             </div>
+            <span>
+                From Airport
+            </span>
         </mat-radio-button>
         <mat-radio-button value="strawberry">
-            <mat-icon svgIcon="plan-down"></mat-icon>
+            <div class="d-flex justify-content-between align-items-center">
+                <mat-icon svgIcon="plan-down"></mat-icon>
+                <mat-icon>
+                    check
+                </mat-icon>
+            </div>
+            <span>
+                To Airport
+            </span>
         </mat-radio-button>
-    </mat-radio-group>
+    </mat-radio-group> -->
 </form>

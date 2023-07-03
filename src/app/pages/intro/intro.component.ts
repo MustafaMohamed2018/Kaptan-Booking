@@ -22,5 +22,11 @@ export class IntroComponent implements OnInit {
       })
     })
   }
+  
 
+  activateRoute(ev) {
+    console.log(ev);
+    console.log(ev.form)
+    ev.form = this.form;
+  }
 }

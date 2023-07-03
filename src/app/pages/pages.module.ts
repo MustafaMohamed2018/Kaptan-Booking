@@ -7,6 +7,8 @@ import { FirstStepComponent } from './first-step/first-step.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
     PagesRoutingModule,
     MatRadioModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

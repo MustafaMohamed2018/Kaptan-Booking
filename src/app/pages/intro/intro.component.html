@@ -11,7 +11,7 @@
             <span></span>
             <span></span>
         </div>
-        <router-outlet></router-outlet>
+        <router-outlet (activate)="activateRoute($event)"></router-outlet>
     </div>
     <div class="col-lg-6 col-xl-5 p-0 d-lg-block d-none">
         <div class="img-bg">
