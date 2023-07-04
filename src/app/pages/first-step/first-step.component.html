@@ -1,46 +1,48 @@
-<form [formGroup]="formGroup">
-    <mat-button-toggle-group class="type" formControlName="type" (change)="changeType($event.value)">
-        <mat-button-toggle value="down">
-            <div class="content">
-                <div class="d-flex justify-content-between align-items-center">
-                    <mat-icon svgIcon="plan-down"></mat-icon>
-                    <span class="check-cont">
-                        <mat-icon>
-                            check
-                        </mat-icon>
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+    <div class="form-group mb-4">
+        <mat-button-toggle-group class="type" formControlName="type" (change)="changeType($event.value)">
+            <mat-button-toggle value="down">
+                <div class="content">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <mat-icon svgIcon="plan-down"></mat-icon>
+                        <span class="check-cont">
+                            <mat-icon>
+                                check
+                            </mat-icon>
+                        </span>
+                    </div>
+                    <span class="text">
+                        From Airport
                     </span>
                 </div>
-                <span class="text">
-                    From Airport
-                </span>
-            </div>
-        </mat-button-toggle>
-
-        <span style="width: 16px;"></span>
-
-        <mat-button-toggle value="up">
-            <div class="content">
-                <div class="d-flex justify-content-between align-items-center">
-                    <mat-icon svgIcon="plan-up"></mat-icon>
-                    <span class="check-cont">
-                        <mat-icon>
-                            check
-                        </mat-icon>
+            </mat-button-toggle>
+    
+            <span style="width: 16px;"></span>
+    
+            <mat-button-toggle value="up">
+                <div class="content">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <mat-icon svgIcon="plan-up"></mat-icon>
+                        <span class="check-cont">
+                            <mat-icon>
+                                check
+                            </mat-icon>
+                        </span>
+                    </div>
+                    <span class="text">
+                        To Airport
                     </span>
                 </div>
-                <span class="text">
-                    To Airport
-                </span>
-            </div>
-        </mat-button-toggle>
-    </mat-button-toggle-group>
-
-    <div>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+   
+    <div class="form-group mb-3">
         <label class="d-flex">
             Select airport
         </label>
         <mat-button-toggle-group formControlName="airport" class="row-btns" >
-            <mat-button-toggle value="bold">
+            <mat-button-toggle value="bold" class="mb-3">
                 <div class="content">
                     <span class="check-cont">
                         <mat-icon>
@@ -67,7 +69,7 @@
         </mat-button-toggle-group>
     </div>
 
-    <div class="mb-3" *ngIf="formGroup.controls['type'].value == 'down' ">
+    <div class="mb-3 form-group" *ngIf="formGroup.controls['type'].value == 'down' ">
         <label class="d-flex align-items-center input-label" for="flight">
             <mat-icon>
                 flight
@@ -77,7 +79,7 @@
         <input formControlName="tripNumber" type="text" id="flight">
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 form-group">
         <label class="d-flex align-items-center input-label" for="Location">
             <mat-icon>
                 location_on

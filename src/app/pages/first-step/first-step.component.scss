@@ -47,7 +47,6 @@ form {
     }
 
     mat-button-toggle-group.type {
-        margin-bottom: 32px;
         mat-button-toggle {
             width: 167px;
             background-color: #FBFBFB;
@@ -97,7 +96,6 @@ form {
             width: 100%;
             border-radius: 8px;
             background: #FBFBFB;
-            margin-bottom: 16px;
             border-color: #E9E9E9;
             ::ng-deep .mat-button-toggle-label-content {
                 width: 100%;

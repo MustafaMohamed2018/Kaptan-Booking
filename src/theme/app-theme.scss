@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use "sass:map";
+
 @include mat.core();
 @include mat.all-component-typographies(
   mat.define-typography-config($font-family: 'Times')
@@ -132,6 +134,16 @@ input {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "inter","Helvetica Neue", sans-serif, arial; }
+
+
+.invalid-feedback {
+  font-size: 12px;
+  padding: 0;
+  display: inline-block;
+  color:  map.get($crimson-palette, 900);
+  margin-bottom: 8px;
+
+}
 
 
 * {

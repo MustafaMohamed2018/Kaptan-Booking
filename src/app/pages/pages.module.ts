@@ -5,10 +5,8 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { IntroComponent } from './intro/intro.component';
 import { FirstStepComponent } from './first-step/first-step.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,11 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PagesRoutingModule,
     MatRadioModule,
-    MatButtonModule,
-    MatIconModule,
     MatButtonToggleModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class PagesModule { }

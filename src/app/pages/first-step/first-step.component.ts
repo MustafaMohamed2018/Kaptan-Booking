@@ -31,4 +31,7 @@ export class FirstStepComponent implements OnInit {
     console.log(this.formGroup)
   }
   
+  save() {
+    console.log(this.form)
+  }
 }

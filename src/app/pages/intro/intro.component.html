@@ -1,17 +1,19 @@
 <section class="row">
     <div class="col-lg-6 col-xl-7 main-content">
-        <h2>
-            Lets start a new transfer
-        </h2>
-        <p>
-            Reservation Confirmation
-        </p>
-        <div class="steps">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
+        <div class="page-content">
+            <h2>
+                Lets start a new transfer
+            </h2>
+            <p>
+                Reservation Confirmation
+            </p>
+            <div class="steps">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+            <router-outlet (activate)="activateRoute($event)"></router-outlet>
         </div>
-        <router-outlet (activate)="activateRoute($event)"></router-outlet>
     </div>
     <div class="col-lg-6 col-xl-5 p-0 d-lg-block d-none">
         <div class="img-bg">
