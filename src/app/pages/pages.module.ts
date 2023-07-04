@@ -7,12 +7,14 @@ import { FirstStepComponent } from './first-step/first-step.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from '../shared/shared.module';
+import { SecondStepComponent } from './second-step/second-step.component';
 
 
 @NgModule({
   declarations: [
     IntroComponent,
-    FirstStepComponent
+    FirstStepComponent,
+    SecondStepComponent
   ],
   imports: [
     CommonModule,

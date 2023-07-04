@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IntroComponent } from './intro/intro.component';
 import { FirstStepComponent } from './first-step/first-step.component';
+import { SecondStepComponent } from './second-step/second-step.component';
 
 const routes: Routes = [
   {
@@ -12,12 +13,15 @@ const routes: Routes = [
         path:'1',
         component:FirstStepComponent
       },
-
+      {
+        path:'2',
+        component:SecondStepComponent
+      },
       {
         path:'',
         redirectTo:'1',
         pathMatch:'full'
-      }
+      },
     ]
   }
 ];

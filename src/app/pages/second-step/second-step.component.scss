@@ -1,0 +1,23 @@
+.airport-info {
+    border: 1px solid #E9E9E9;
+    border-radius: 8px;
+    padding: 10px 32px;
+    div {
+        text-align: center;
+        width: 150px;
+        span {
+            color: #8D8D8D;
+            font-size: 14px;
+        }
+        p {
+            color: #101010;
+            font-size: 14px;
+            margin: 4px 0 0 0;
+        }
+    }
+    mat-icon {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+    }
+}

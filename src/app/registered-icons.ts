@@ -7,4 +7,8 @@ export const RegisteredIcons = [
         name:'plan-down',
         path:'../assets/icons/plan-down.svg'
     },
+    {
+        name:'arrows',
+        path:'../assets/icons/arrows.svg'
+    },
 ]
