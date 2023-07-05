@@ -18,6 +18,10 @@ export class IntroComponent implements OnInit {
         airport:new FormControl(null, Validators.required),
         tripNumber:new FormControl(null, Validators.required),
         deliveryLocation:new FormControl(null, Validators.required),
+      }),
+      second:new FormGroup({
+        date:new FormControl(null, Validators.required),
+        time:new FormControl(null, Validators.required),
 
       })
     })

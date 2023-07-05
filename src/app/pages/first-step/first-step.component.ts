@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first-step',
@@ -7,6 +8,10 @@ import { FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./first-step.component.scss']
 })
 export class FirstStepComponent implements OnInit {
+
+  constructor(
+    private router:Router,
+  ) {}
 
   form:any;
 
@@ -20,7 +25,6 @@ export class FirstStepComponent implements OnInit {
       this.formGroup.controls['tripNumber'].setValidators(Validators.required);
       this.formGroup.controls['tripNumber'].updateValueAndValidity();
       this.form.updateValueAndValidity();
-
     }
   }
 
@@ -32,6 +36,9 @@ export class FirstStepComponent implements OnInit {
   }
   
   save() {
-    console.log(this.form)
+    console.log(this.form);
+    if(this.formGroup.valid) {
+      this.router.navigate(['/2'])
+    }
   }
 }

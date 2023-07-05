@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from '../shared/shared.module';
 import { SecondStepComponent } from './second-step/second-step.component';
+import { NgxMatTimepickerModule } from 'src/ngx-mat-timepicker/ngx-mat-timepicker.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SecondStepComponent } from './second-step/second-step.component';
     PagesRoutingModule,
     MatRadioModule,
     MatButtonToggleModule,
-    SharedModule
+    SharedModule,
+    NgxMatTimepickerModule,
   ]
 })
 export class PagesModule { }
