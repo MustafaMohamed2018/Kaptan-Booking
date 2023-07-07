@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-intro',
@@ -22,7 +22,7 @@ export class IntroComponent implements OnInit {
       second:new FormGroup({
         date:new FormControl(null, Validators.required),
         time:new FormControl(null, Validators.required),
-
+        passengers:new FormArray([], Validators.required)
       })
     })
   }

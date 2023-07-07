@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
+import { PassengersComponent } from './passengers/passengers.component';
 
 @Component({
   selector: 'app-second-step',
@@ -58,7 +59,18 @@ export class SecondStepComponent {
       if(result) this.formGroup.setValue(result);
     });
   }
+
+
+  openPassengersDialog() {
+    const dialogRef = this.dialog.open(PassengersComponent, {
+      panelClass:'time-dialog',
+      data: (this.formGroup.controls.passengers as FormArray).value,
+      maxWidth:'100%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.formGroup.setValue(result);
+    });
+  }
   
-
-
 }

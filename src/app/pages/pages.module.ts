@@ -16,13 +16,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { PassengersComponent } from './second-step/passengers/passengers.component';
+// import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
 @NgModule({
   declarations: [
     IntroComponent,
     FirstStepComponent,
     SecondStepComponent,
-    TimeSelectComponent
+    TimeSelectComponent,
+    PassengersComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatListModule,
     MatRippleModule,
-    MatDividerModule
+    MatDividerModule,
+    // NgxMatIntlTelInputComponent
   ]
 })
 export class PagesModule { }

@@ -32,6 +32,23 @@
             </div>
         </mat-list-item>
         <mat-divider></mat-divider>
+        <mat-list-item matRipple (click)="openPassengersDialog()">
+            <mat-icon matListItemIcon svgIcon="users"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between passengers"> 
+                <span>
+                    <!-- {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }} -->
+                    {{ formGroup.controls.passengers['length'] }}
+                    Passenger
+                </span>
+                <mat-icon>
+                    chevron_right
+                </mat-icon>
+            </div>
+            <div matListItemLine>
+                Add the number of passengers
+            </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
 
     </mat-list>
 

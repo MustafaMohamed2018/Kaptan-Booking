@@ -27,20 +27,49 @@ mat-list {
         cursor: pointer;
         padding: 0;
         border-radius: 8px;
+
+
+        align-items: center;
+        height: auto;
+        padding: 12px 0;
+        height: auto !important;
         mat-icon.mat-mdc-list-item-icon {
             margin: 0 13px;
+            align-self: auto;
         }
+        .mdc-list-item__content{
+
+        }
+        
         div {
+            margin-bottom: 0;
+            &::before, &::after {
+                display: none;
+            }
             span {
                 font-size: 14px;
             }
             mat-icon {
                 margin: 0px 6px;
             }
+            &.passengers {
+                overflow: visible;
+                mat-icon {
+                    position: relative;
+                    bottom: -10px;
+                }
+            }
+        }
+
+        .mdc-list-item__secondary-text{
+            // margin-top: -10px;
         }
         &:hover {
             background-color: rgba(0,0,0,.05);
         }
+    }
+    mat-divider {
+        margin: 10px 0;
     }
 }
 

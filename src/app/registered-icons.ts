@@ -15,4 +15,8 @@ export const RegisteredIcons = [
         name:'calendar-clock',
         path:'../assets/icons/calendar-clock.svg'
     },
+    {
+        name:'users',
+        path:'../assets/icons/users.svg'
+    },
 ]

@@ -1,0 +1,25 @@
+<form [formGroup]="form" (submit)="submit()">
+    <h2 mat-dialog-title>
+        Indicate The Time And Date Of The Trip
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <section>
+            <!-- <ngx-mat-intl-tel-input
+            [preferredCountries]="['us', 'gb']"
+            [enablePlaceholder]="true"
+            [enableSearch]="true"
+            name="phone"
+            formControlName="phone"
+            #phone
+            ></ngx-mat-intl-tel-input> -->
+        </section>
+    </mat-dialog-content>
+    <mat-dialog-actions >
+        <button mat-raised-button cdkFocusInitial color="primary">
+            Save
+        </button>
+        <button mat-button mat-dialog-close type="button">
+            Re-Set
+        </button>
+    </mat-dialog-actions>
+</form>
