@@ -1,49 +1,43 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TimeSelectComponent } from './time-select/time-select.component';
-import { PassengersComponent } from './passengers/passengers.component';
+import { TimeSelectComponent } from '../second-step/time-select/time-select.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-second-step',
-  templateUrl: './second-step.component.html',
-  styleUrls: ['./second-step.component.scss']
+  selector: 'app-third-step',
+  templateUrl: './third-step.component.html',
+  styleUrls: ['./third-step.component.scss']
 })
-export class SecondStepComponent {
-  parent
+export class ThirdStepComponent {
+  parent;
+  form;
 
   constructor(
+    private activedRoute:ActivatedRoute,
     private router:Router,
     private dialog:MatDialog,
-    private activedRoute:ActivatedRoute
   ) {
     setTimeout(() => {
       this.parent.step = this.activedRoute.snapshot.data.step
     })
   }
-  
-
-  form:any;
-
 
   formGroup:FormGroup;
   firstForm;
   ngOnInit(): void {
     this.formGroup = this.form.controls.second;
-    this.firstForm = this.form.controls.first;
 
     console.log(this.formGroup)
   }
   
   save() {
     console.log(this.form);
-    if(this.form.valid) {
-      this.router.navigate(['/2'])
-    }
+    // if(this.form.valid) {
+    //   this.router.navigate(['/2'])
+    // }
   }
-
-
+  
   openDialog() {
     let date = new Date();
     if(this.formGroup.controls['date'].value) date = new Date(this.formGroup.controls['date'].value);
@@ -65,6 +59,4 @@ export class SecondStepComponent {
       if(result) this.formGroup.patchValue(result);
     });
   }
-
-  
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-first-step',
@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./first-step.component.scss']
 })
 export class FirstStepComponent implements OnInit {
-
+  parent
   constructor(
     private router:Router,
-  ) {}
+    private activedRoute:ActivatedRoute
+  ) {
+    setTimeout(() => {
+      this.parent.step = this.activedRoute.snapshot.data.step
+    })
+  }
 
   form:any;
 

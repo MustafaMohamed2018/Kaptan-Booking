@@ -1,77 +1,106 @@
-<form>
-    <div class="mt-4 airport-info mb-3 d-flex  justify-content-between">
-        <div>
-            <span>
-                From
-            </span>
-            <p>
-                Istanbul Airport
-            </p>
-        </div>
-        <mat-icon svgIcon="arrows"></mat-icon>
-        <div>
-            <span>
-                To
-            </span>
-            <p>
-                Taksim Square In Beyoglu
-            </p>
-        </div>
+<div class="mt-4 airport-info mb-3 d-flex  justify-content-between">
+    <div>
+        <span>
+            From
+        </span>
+        <p>
+            Istanbul Airport
+        </p>
     </div>
+    <mat-icon svgIcon="arrows"></mat-icon>
+    <div>
+        <span>
+            To
+        </span>
+        <p>
+            Taksim Square In Beyoglu
+        </p>
+    </div>
+</div>
+
+<mat-list>
+    <mat-list-item matRipple (click)="openDialog()">
+        <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+        <div matListItemTitle class="d-flex justify-content-between"> 
+            <span>
+                {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }}
+            </span>
+            <mat-icon>
+                chevron_right
+            </mat-icon>
+        </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item matRipple routerLink="/add-passenger">
+        <mat-icon matListItemIcon svgIcon="users"></mat-icon>
+        <div matListItemTitle class="d-flex justify-content-between passengers"> 
+            <span>
+                <!-- {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }} -->
+                {{ formGroup.controls.passengers.value?.length || 0 }}
+                Passenger
+            </span>
+            <mat-icon>
+                chevron_right
+            </mat-icon>
+        </div>
+        <div matListItemLine>
+            Add the number of passengers
+        </div>
+    </mat-list-item>
 
     <mat-list>
-        <mat-list-item matRipple (click)="openDialog()">
-            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
-            <div matListItemTitle class="d-flex justify-content-between"> 
-                <span>
-                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }}
-                </span>
-                <mat-icon>
-                    chevron_right
-                </mat-icon>
-            </div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item matRipple routerLink="/add-passenger">
-            <mat-icon matListItemIcon svgIcon="users"></mat-icon>
-            <div matListItemTitle class="d-flex justify-content-between passengers"> 
-                <span>
-                    <!-- {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }} -->
-                    {{ formGroup.controls.passengers.value?.length || 0 }}
-                    Passenger
-                </span>
-                <mat-icon>
-                    chevron_right
-                </mat-icon>
-            </div>
-            <div matListItemLine>
-                Add the number of passengers
-            </div>
-        </mat-list-item>
+        <mat-card matRipple *ngFor="let i of [1,2,3,4,5,6]" [class.selected]="formGroup.controls.car.value == i" (click)="formGroup.controls.car.setValue(i)">
+            <mat-card-content>
+                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
 
-        <mat-list>
-            <button mat-button>
-                sdds sdd
-            </button>
-        </mat-list>
+                <div>
+                    <h3>
+                        Economy VAN
+                    </h3>
+                    <p>
+                        Mercedes Vito etc
+                    </p>
+                    <div class="details">
+                        <span>
+                            <mat-icon svgIcon="users"></mat-icon>
+                            Max 5
+                        </span>
 
+                        <span class="dot"></span>
+
+                        <span>
+                            <mat-icon >business_center</mat-icon>
+                            Max 5
+                        </span>
+
+                        <span class="dot"></span>
+
+                        <span>
+                            <mat-icon>airport_shuttle</mat-icon>
+                            Private Car
+                        </span>
+                        
+                    </div>
+
+                    <p class="price p-0 m-0" >
+                        <span>
+                            125
+                        </span>
+                        tl
+                    </p>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
     </mat-list>
 
-   
+</mat-list>
 
-
-
-    <!-- <div class="clock-container">
-        <div class="clock-face">
-          <div class="hand hour-hand" [style.transform]="getHourHandTransform()"></div>
-          <div class="hand minute-hand" [style.transform]="getMinuteHandTransform()"></div>
-        </div>
-    </div> -->
-
-
-    <!-- <app-clock></app-clock> -->
-
-
-
-</form>
-
+<div class="actions d-flex justify-content-between align-items-center ">
+    <button mat-button routerLink="/1">
+        Previous
+    </button>
+    <button mat-raised-button color="primary"  [disabled]="formGroup.invalid"  routerLink="/3">
+        Next
+    </button>
+</div>

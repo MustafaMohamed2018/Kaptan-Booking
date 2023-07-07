@@ -4,6 +4,7 @@ import { IntroComponent } from './intro/intro.component';
 import { FirstStepComponent } from './first-step/first-step.component';
 import { SecondStepComponent } from './second-step/second-step.component';
 import { PassengersComponent } from './second-step/passengers/passengers.component';
+import { ThirdStepComponent } from './third-step/third-step.component';
 
 const routes: Routes = [
   {
@@ -12,15 +13,31 @@ const routes: Routes = [
     children:[
       {
         path:'1',
-        component:FirstStepComponent
+        component:FirstStepComponent,
+        data:{
+          step:1
+        }
       },
       {
         path:'2',
-        component:SecondStepComponent
+        component:SecondStepComponent,
+        data:{
+          step:2
+        }
       },
       {
         path:'add-passenger',
-        component:PassengersComponent
+        component:PassengersComponent,
+        data:{
+          step:2
+        }
+      },
+      {
+        path:'3',
+        component: ThirdStepComponent,
+        data:{
+          step:3
+        }
       },
       {
         path:'',

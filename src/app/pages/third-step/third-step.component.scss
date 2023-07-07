@@ -1,24 +1,47 @@
-.airport-info {
+
+.passengers-airport {
     border: 1px solid #E9E9E9;
     border-radius: 8px;
-    padding: 10px 32px;
-    div {
-        text-align: center;
-        width: 150px;
-        span {
-            color: #8D8D8D;
-            font-size: 14px;
+    padding: 8px 10px 10px;
+    .airport-info {
+       
+        align-items: center;
+        // flex-wrap: wrap;
+        div {
+            text-align: center;
+            width: 150px;
+            span {
+                color: #8D8D8D;
+                font-size: 14px;
+            }
+            p {
+                color: #101010;
+                font-size: 14px;
+                margin: 4px 0 0 0;
+            }
         }
-        p {
-            color: #101010;
-            font-size: 14px;
-            margin: 4px 0 0 0;
+        mat-icon {
+            font-size: 36px;
+            width: 36px;
+            height: 36px;
         }
+     
     }
-    mat-icon {
-        font-size: 36px;
-        width: 36px;
-        height: 36px;
+
+    .passengers {
+        width: 100%;
+        justify-content: flex-start;
+        display: flex;
+        padding-top: 10px;
+        margin-top: 12px;
+        border-top: 1px solid #E9E9E9;
+        font-size: 14px;
+        mat-icon {
+            width: 24px;
+            height: 24px;
+            font-size: 24px;
+            margin-right: 8px
+        }
     }
 }
 
@@ -36,10 +59,16 @@ mat-list {
         mat-icon.mat-mdc-list-item-icon {
             margin: 0 13px;
             align-self: auto;
+            padding: 6px;
+            background: #F2F5F8;
+            width: 36px;
+            height: 36px;
+            border-radius: 50px;
         }
         
         div {
             margin-bottom: 0;
+            align-items: center;
             &::before, &::after {
                 display: none;
             }
@@ -49,12 +78,18 @@ mat-list {
             mat-icon {
                 margin: 0px 6px;
             }
+            button {
+                // position: relative;
+                // bottom: -10px;
+                font-size: 16px;
+                font-weight: normal;
+            }
             &.passengers {
                 overflow: visible;
-                mat-icon {
-                    position: relative;
-                    bottom: -10px;
-                }
+                // button {
+                //     position: relative;
+                //     bottom: -10px;
+                // }
             }
         }
 
@@ -72,7 +107,7 @@ mat-list {
     .airport-info {
         flex-direction: column;
         align-items: center;
-        mat-icon {
+        mat-icon[svgIcon="arrows"] {
             transform: rotate(90deg);
             height: 30px;
             width: 30px;
@@ -152,17 +187,25 @@ mat-card {
     }
 }
 
-.actions {
-    margin-bottom: 2rem;
+
+form {
+    .form-group {
+        label {
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: block;
+        }
+    }
+
     button {
-        height: 56px;
-        width: 150px;
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 400px;
         border-radius: 8px;
-        font-size: 16px;
         font-weight: normal;
+        font-size: 16px;
         &:first-of-type {
-            border: 1px solid #707070;
-            color: #707070;
+            height: 56px;
         }
     }
 }

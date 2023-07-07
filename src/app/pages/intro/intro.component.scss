@@ -54,9 +54,20 @@ section {
     }
 
     .main-content {
-        padding: 48px 100px;
-        max-height: 100vh;
-        overflow: auto;
+        padding: 48px 100px 0 100px;
+        // max-height: 100vh;
+        // overflow: auto;
+
+        .page-content {
+            text-align: initial;
+            display: inline-block;
+            .router-cont {
+                max-height: calc(100vh - 152px);
+                overflow: auto;
+                padding-right: 16px;
+            }
+        }
+
         p,h2{
             color: var(--text-color);
         }
@@ -68,6 +79,7 @@ section {
         }
         .steps {
             display: flex;
+            margin-bottom: 16px;
             span {
                 width: 34px;
                 height: 3px;
@@ -102,7 +114,3 @@ section {
     }
 }
 
-.page-content {
-    text-align: initial;
-    display: inline-block;
-}

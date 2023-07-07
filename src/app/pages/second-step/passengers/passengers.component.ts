@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
@@ -17,16 +17,14 @@ export class PassengersComponent implements OnInit {
   passengersList = [];
 
   CountryISOReversed = {};
+  parent
   constructor(
-    private router:Router
+    private router:Router,
+    private activedRoute:ActivatedRoute
   ) {
-    // this.passengersForm = new FormGroup({
-    //   // name:new FormControl(null, Validators.required),
-    //   // gender: new FormControl(1, Validators.required),
-    //   // phone : new FormControl(null, Validators.required),
-    //   // email : new FormControl(null, [Validators.required, Validators.email]),
-    //   passengers:new FormArray([], Validators.required)
-    // })
+    setTimeout(() => {
+      this.parent.step = this.activedRoute.snapshot.data.step
+    })
 
     this.addPassenger();
     for(let key in CountryISO) {
@@ -85,6 +83,8 @@ export class PassengersComponent implements OnInit {
         }
         this.passengersList[this.activeEditIndex] = value;
   
+        this.form.controls.second.controls.passengers.setValue(this.passengersList);
+
         this.activeEditIndex = null;
         this.editForm = null;
       }
@@ -107,6 +107,8 @@ export class PassengersComponent implements OnInit {
       }
       this.passengersList.push(value);
 
+      this.form.controls.second.controls.passengers.setValue(this.passengersList);
+
       console.log(this.passengersList);
 
       // f.resetForm();
@@ -114,26 +116,6 @@ export class PassengersComponent implements OnInit {
       // f.resetForm();
     }
   }
-
-
-
-
-
-
-  separateDialCode = false;
-	SearchCountryField = SearchCountryField;
-	CountryISO = CountryISO;
-  PhoneNumberFormat = PhoneNumberFormat;
-	preferredCountries: CountryISO[] = [CountryISO.Turkey, CountryISO.UnitedStates, CountryISO.UnitedKingdom];
-	phoneForm = new FormGroup({
-		phone: new FormControl(undefined, [Validators.required])
-	});
-
-	changePreferredCountries() {
-		this.preferredCountries =  [CountryISO.Turkey, CountryISO.UnitedStates, CountryISO.UnitedKingdom];
-	}
-  
-
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-intro',
@@ -8,6 +9,14 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class IntroComponent implements OnInit {
  
+
+  constructor(
+    private activedRoute:ActivatedRoute
+  ) {
+    setTimeout(() => {
+      console.log(this.activedRoute.snapshot)
+    }, 10)
+  }
 
   form:FormGroup;
   
@@ -22,15 +31,21 @@ export class IntroComponent implements OnInit {
       second:new FormGroup({
         date:new FormControl(null, Validators.required),
         time:new FormControl(null, Validators.required),
-        passengers:new FormControl(null, Validators.required)
-      })
+        passengers:new FormControl(null, Validators.required),
+        car: new FormControl(null, Validators.required)
+      }),
+      notes:new FormControl(null),
+    });
+
+    this.activedRoute.data.subscribe(r => {
+      console.log(r)
     })
   }
   
 
+  step = 1;
   activateRoute(ev) {
-    console.log(ev);
-    console.log(ev.form)
+    ev.parent = this;
     ev.form = this.form;
   }
 }

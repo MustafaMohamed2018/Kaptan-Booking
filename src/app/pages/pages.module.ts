@@ -20,6 +20,8 @@ import { PassengersComponent } from './second-step/passengers/passengers.compone
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PassengerFormComponent } from './second-step/passengers/passenger-form/passenger-form.component';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
+import { MatCardModule } from '@angular/material/card';
+import { ThirdStepComponent } from './third-step/third-step.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { PassengerFormComponent } from './second-step/passengers/passenger-form/
     SecondStepComponent,
     TimeSelectComponent,
     PassengersComponent,
-    PassengerFormComponent
+    PassengerFormComponent,
+    ThirdStepComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ import { PassengerFormComponent } from './second-step/passengers/passenger-form/
     MatRippleModule,
     MatDividerModule,
     NgxIntlTelInputModule,
+    MatCardModule
     // NgxMatIntlTelInputComponent
   ]
 })

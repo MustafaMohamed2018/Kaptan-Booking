@@ -8,11 +8,11 @@
                 Reservation Confirmation
             </p>
             <div class="steps">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
+                <span *ngFor="let i of [1,2,3]" [class.active]="i <= step"></span>
             </div>
-            <router-outlet (activate)="activateRoute($event)"></router-outlet>
+            <div class="router-cont">
+                <router-outlet (activate)="activateRoute($event)"></router-outlet>
+            </div>
         </div>
     </div>
     <div class="col-lg-6 col-xl-5 p-0 d-lg-block d-none">
