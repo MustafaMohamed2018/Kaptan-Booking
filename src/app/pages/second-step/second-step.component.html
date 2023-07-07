@@ -37,7 +37,7 @@
             <div matListItemTitle class="d-flex justify-content-between passengers"> 
                 <span>
                     <!-- {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : 'Plese Add The Date' }} -->
-                    {{ formGroup.controls.passengers['length'] }}
+                    {{ formGroup.controls.passengers.value?.length || 0 }}
                     Passenger
                 </span>
                 <mat-icon>
@@ -48,7 +48,12 @@
                 Add the number of passengers
             </div>
         </mat-list-item>
-        <mat-divider></mat-divider>
+
+        <mat-list>
+            <button mat-button>
+                sdds sdd
+            </button>
+        </mat-list>
 
     </mat-list>
 

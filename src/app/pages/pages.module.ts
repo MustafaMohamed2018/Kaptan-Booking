@@ -18,6 +18,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { PassengersComponent } from './second-step/passengers/passengers.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { PassengerFormComponent } from './second-step/passengers/passenger-form/passenger-form.component';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
     FirstStepComponent,
     SecondStepComponent,
     TimeSelectComponent,
-    PassengersComponent
+    PassengersComponent,
+    PassengerFormComponent
   ],
   imports: [
     CommonModule,

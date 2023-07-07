@@ -22,7 +22,7 @@ export class IntroComponent implements OnInit {
       second:new FormGroup({
         date:new FormControl(null, Validators.required),
         time:new FormControl(null, Validators.required),
-        passengers:new FormArray([], Validators.required)
+        passengers:new FormControl(null, Validators.required)
       })
     })
   }

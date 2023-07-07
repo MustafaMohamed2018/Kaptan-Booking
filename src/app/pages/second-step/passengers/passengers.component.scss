@@ -14,14 +14,7 @@
             padding-right: 12px;
         }
     }
-   form.ng-pristine ::ng-deep app-error{
-        display: none;
-   }
-    ::ng-deep app-error {
-        display: block;
-        // text-align: center;
-        // margin-top: 16px;
-    }
+   
 
     mat-divider {
         margin: 10px 0;
@@ -158,6 +151,21 @@ form {
         }
     }
 }
+
+footer {
+    button {
+        display: block;
+        margin: auto;
+        margin-top: 8rem;
+        border-radius: 8px;
+        padding: 1rem 2rem;
+        height: auto;
+        font-size: 16px;
+        font-weight: normal;
+        width: 278px;
+    }
+}
+
 
 @-webkit-keyframes fade {
     0% {

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
@@ -8,13 +9,17 @@ import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-
   templateUrl: './passengers.component.html',
   styleUrls: ['./passengers.component.scss']
 })
-export class PassengersComponent {
+export class PassengersComponent implements OnInit {
+  form;
+
   passengersForm:FormGroup;
 
   passengersList = [];
 
   CountryISOReversed = {};
-  constructor() {
+  constructor(
+    private router:Router
+  ) {
     // this.passengersForm = new FormGroup({
     //   // name:new FormControl(null, Validators.required),
     //   // gender: new FormControl(1, Validators.required),
@@ -29,36 +34,70 @@ export class PassengersComponent {
     }
   }
 
+  ngOnInit(): void {
+    this.passengersList = this.form.controls.second.controls.passengers.value || [];
+  }
+
 
   addPassenger(data = {}) {
-    // let passengers = this.passengersForm.controls.passengers as FormArray;
     this.passengersForm = null;
+    this.passengersForm = new FormGroup({
+      name:new FormControl(null, Validators.required),
+      gender: new FormControl(1, Validators.required),
+    });
 
+
+    if(!this.passengersList.length) {
+      this.passengersForm.addControl('email',  new FormControl(null, [Validators.required, Validators.email]) );
+      this.passengersForm.addControl('phone',  new FormControl(null, [Validators.required]) );
+    }
     
-    // setTimeout(() => {
-      this.passengersForm = new FormGroup({
-        name:new FormControl(null, Validators.required),
-        gender: new FormControl(1, Validators.required),
-      });
-
-  
-      let phonev = {"number":"+201024267254","internationalNumber":"+20 102 426 7254","nationalNumber":"0102 426 7254","e164Number":"+201024267254","countryCode":"EG","dialCode":"+20"}
-      if(!this.passengersList.length) {
-        this.passengersForm.addControl('email',  new FormControl(null, [Validators.required, Validators.email]) );
-        this.passengersForm.addControl('phone',  new FormControl(phonev, [Validators.required]) );
-      }
-      
-      this.passengersForm.patchValue(data);
-    // })
-
-    
+    this.passengersForm.patchValue(data);
   }
+
+  editForm:FormGroup;
+  activeEditIndex = null;
+  editPassenger(index) {
+    this.editForm = null;
+    this.activeEditIndex = index;
+    let value = this.passengersList[index];
+
+    this.editForm = new FormGroup({
+      name:new FormControl(null, Validators.required),
+      gender: new FormControl(1, Validators.required),
+    });
+
+    if(index === 0) {
+      this.editForm.addControl('email',  new FormControl(null, [Validators.required, Validators.email]) );
+      this.editForm.addControl('phone',  new FormControl(null, [Validators.required]) );
+    }
+
+    this.editForm.patchValue(value);
+  }
+
+
+  updatePassenger(action) {
+    if(action) {
+      if(this.editForm.valid) {
+        let value = {...this.editForm.value};
+        if(value.phone) {
+          value.phone.countryName = this.CountryISOReversed[value.phone.countryCode.toLowerCase()]
+        }
+        this.passengersList[this.activeEditIndex] = value;
+  
+        this.activeEditIndex = null;
+        this.editForm = null;
+      }
+    }
+    else this.activeEditIndex = null;
+  }
+
 
   delete(i) {
     this.passengersList.splice(i,1);
   }
 
-  submit (f) {
+  submit (v) {
     console.log(this.passengersForm);
 
     if(this.passengersForm.valid) {
@@ -70,11 +109,14 @@ export class PassengersComponent {
 
       console.log(this.passengersList);
 
-      f.resetForm();
+      // f.resetForm();
       this.addPassenger();
       // f.resetForm();
     }
   }
+
+
+
 
 
 
@@ -91,4 +133,14 @@ export class PassengersComponent {
 		this.preferredCountries =  [CountryISO.Turkey, CountryISO.UnitedStates, CountryISO.UnitedKingdom];
 	}
   
+
+
+
+
+  save() {
+    console.log(this.form);
+
+    this.form.controls.second.controls.passengers.setValue(this.passengersList);
+    this.router.navigate(['/2'])
+  }
 }

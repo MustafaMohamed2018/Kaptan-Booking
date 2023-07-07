@@ -50,7 +50,7 @@
 
     <mat-list >
         <ng-container *ngFor="let passenger of passengersList; index as i">
-            <mat-list-item>
+            <mat-list-item *ngIf="activeEditIndex !== i; else showEditForm ">
                 <div matListItemTitle class="d-flex justify-content-between">
                     <span>
                         {{ passenger.name }}
@@ -62,7 +62,7 @@
                         {{ passenger.phone.countryName }}
                     </span>
                     <div class="d-flex action-btns">
-                        <button mat-button class="edit">
+                        <button mat-button class="edit" (click)="editPassenger(i)">
                             Edit
                         </button>
                         <ng-container *ngIf="i !== 0">
@@ -83,13 +83,19 @@
                 </div>
 
             </mat-list-item>
+
+            <ng-template #showEditForm>
+                <app-passenger-form [inEdit]="true" [passengerForm]="editForm" [passengersList]="passengersList" (btnClicked)="updatePassenger($event)"></app-passenger-form>
+            </ng-template>
+
+
             <mat-divider></mat-divider>
         </ng-container>
         
 
     </mat-list>
     
-    <form [formGroup]="passengersForm"  #f="ngForm" (submit)="submit(f)" *ngIf="passengersForm">
+    <!-- <form [formGroup]="passengersForm"  #f="ngForm" (submit)="submit(f)" *ngIf="passengersForm">
         <header class="mb-3" *ngIf="passengersList.length != 0">
             <h2 mat-dialog-title>
                 Add Passengers
@@ -135,22 +141,17 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form> -->
 
 
-    <!-- <ngx-mat-intl-tel-input
-    [preferredCountries]="['us', 'gb']"
-    [enablePlaceholder]="true"
-    [enableSearch]="true"
-    name="phone"
-    formControlName="phone"
-    #phone
-    ></ngx-mat-intl-tel-input> -->
+    <app-passenger-form [passengerForm]="passengersForm" [passengersList]="passengersList" (btnClicked)="submit($event)"></app-passenger-form>
 
     
-    <footer>
-        <button mat-raised-button [disabled]="passengersList.length  == 0" color="primary">
+    <!-- <footer>
+        <button mat-raised-button [disabled]="passengersList.length == 0" color="primary" (click)="save()">
             Done
         </button>
-    </footer>
+    </footer> -->
 </section>
+
+

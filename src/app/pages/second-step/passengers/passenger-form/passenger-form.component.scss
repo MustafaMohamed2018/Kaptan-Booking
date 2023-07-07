@@ -1,0 +1,83 @@
+form.ng-pristine ::ng-deep app-error{
+    display: none;
+}
+
+
+h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin:0;
+}
+
+form {
+
+    display: inline-block;
+    animation: fade .5s;
+    padding-top: 10px;
+
+    ::ng-deep app-error {
+        display: block;
+        // text-align: center;
+        // margin-top: 16px;
+    }
+    
+    input {
+        background-color: #F2F5F8;
+        border: 1px solid #E9E9E9;
+    }
+
+    .submit-btn {
+        border: 1px solid #E9E9E9;
+        border-radius: 8px;
+        padding: 1rem 2rem;
+        height: auto;
+        font-size: 16px;
+        font-weight: normal;
+        margin-top: 8px;
+        mat-icon {
+            width: 23px;
+            height: 23px;
+            font-size: 23px;
+            font-weight: bold;
+        }
+    }
+
+    .in-edit-btns {
+        button {
+            // height: 28px;
+            // font-size: 12px;
+            // min-width: 50px;
+            font-weight: normal;
+            &.edit {
+                color: #8DC53E;
+            }
+            &.delete{
+                color: #D20000;
+            }
+           
+        }
+
+        span.pipe {
+            width: 32px;
+        }
+    }
+}
+
+@-webkit-keyframes fade {
+    0% {
+    
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+@keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+

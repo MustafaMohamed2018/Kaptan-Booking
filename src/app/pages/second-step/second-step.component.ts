@@ -64,7 +64,7 @@ export class SecondStepComponent {
   openPassengersDialog() {
     const dialogRef = this.dialog.open(PassengersComponent, {
       panelClass:'time-dialog',
-      data: (this.formGroup.controls.passengers as FormArray).value,
+      data: this.formGroup.controls.passengers.value,
       maxWidth:'100%'
     });
 
