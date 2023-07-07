@@ -17,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { PassengersComponent } from './second-step/passengers/passengers.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { PassengersComponent } from './second-step/passengers/passengers.compone
     MatListModule,
     MatRippleModule,
     MatDividerModule,
+    NgxIntlTelInputModule,
     // NgxMatIntlTelInputComponent
   ]
 })

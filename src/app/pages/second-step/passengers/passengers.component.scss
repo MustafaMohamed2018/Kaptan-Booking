@@ -1,66 +1,143 @@
 :host {
-    width: 95vw;
-    display: block;
-    max-width: 850px;
-    h2 {
-        font-size: 17px;
-        margin-top: 1rem;
-    }
-    mat-calendar {
-        max-width: 350px;
-        margin: auto;
-        margin-top: -16px;
-    }
-    mat-dialog-actions {
-        padding: 8px 18px 30px;
+    header {
+        margin-bottom: 24px;
+        h2 {
+            font-size: 16px;
+            font-weight: normal;
+            margin:0;
+        }
         button {
-            width: 158px;
-            height: 48px;
-            margin: 0 12px;
-            border-radius: 8px;
-            &:last-of-type {
-                border: 1px solid #E9E9E9;
-                color: #101010;
-            }
+            border: 1px solid #00299B;
+            border-radius: 50px;
+            font-size: 12px;
+            padding-left: 12px;
+            padding-right: 12px;
         }
     }
+   
     ::ng-deep app-error {
         display: block;
-        text-align: center;
-        margin-top: 16px;
+        // text-align: center;
+        // margin-top: 16px;
     }
 }
 
-@media (max-width: 991px) {
-    mat-dialog-actions {
-        button.mdc-button {
-            width: 120px;
+// ngx-mat-intl-tel-input {
+//     position: relative;
+//     height: 48px;
+//     display: block;
+//     border: 1px solid #E9E9E9;
+//     background: #F2F5F8;
+//     border-radius: 8px;
+//     ::ng-deep {
+//         button.country-selector {
+//             opacity: 1;
+//             &::after{
+//                 content: '';
+//                 position: absolute;
+//                 background-color: #E9E9E9;
+//                 right: 0;
+//                 width: 1px;
+//                 height: 44px;
+//                 top: 2px;
+//             }
+//         }
+//         input{
+//             height: 48px;
+//         }
+//     }
+// }
+
+
+ngx-intl-tel-input {
+    ::ng-deep{
+        input {
+            background-color: #F2F5F8;
+            border: 1px solid #E9E9E9;
         }
-    }
-}
-
-ngx-mat-intl-tel-input {
-    position: relative;
-    height: 48px;
-    display: block;
-    border: 1px solid #E9E9E9;
-    background: #F2F5F8;
-    border-radius: 8px;
-    ::ng-deep {
-        button.country-selector {
-            opacity: 1;
-            &::after{
-                content: '';
-                position: absolute;
-                background-color: #E9E9E9;
-                right: 0;
-                width: 1px;
-                height: 44px;
-                top: 2px;
+        // iti iti--allow-dropdown
+        .iti--allow-dropdown {
+            width: 100%;
+            display: flex;
+            // flex-direction: row-reverse;
+            .flag-container {
+                position: static;
+                .dropdown-menu.country-dropdown.show {
+                    width: 100%;
+                }
             }
         }
-        input{
-            height: 48px;
+    }
+}
+
+section {
+    margin-top: 18px;
+    padding: 16px 0;
+    mat-list {
+        padding: 0;
+        mat-list-item {
+            padding: 20px 0;
+            height: auto;
+            div {
+                align-items: center;
+                margin-bottom: 0;
+                &:after, &::before {
+                    display: none;
+                }
+                & > span {
+                    flex: 1;
+                }
+                span.light {
+                    font-size: 12px;
+                    color: #D2D2D2;
+                }
+                & > span:first-child {
+                    min-width: 50%;
+                    font-size: 16px;
+                }
+                div {
+                    button {
+                        height: 28px;
+                        font-size: 12px;
+                        min-width: 50px;
+                        font-weight: normal;
+                        &.edit {
+                            color: #8DC53E;
+                        }
+                        &.delete{
+                            color: #D20000;
+                        }
+                    }
+                }
+            }
+            div.mdc-list-item__secondary-text {
+                color: #101010;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+form {
+    display: inline-block;
+    input {
+        background-color: #F2F5F8;
+        border: 1px solid #E9E9E9;
+    }
+
+    .submit-btn {
+        border: 1px solid #E9E9E9;
+        border-radius: 8px;
+        padding: 1rem 2rem;
+        height: auto;
+        font-size: 16px;
+        font-weight: normal;
+        margin-top: 8px;
+        mat-icon {
+            width: 23px;
+            height: 23px;
+            font-size: 23px;
+            font-weight: bold;
         }
     }
 }

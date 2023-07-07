@@ -112,6 +112,20 @@ $bluesky-theme: mat.define-light-theme((
 ));
 @include mat.all-component-themes($bluesky-theme);
 
+/* scroll bar settings */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,33,89,.45) !important;
+  border-radius: 15px !important;;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.15) !important;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px !important;
+}
+
+
 
 input {
   background-color: #FBFBFB;
@@ -128,8 +142,8 @@ input {
   font-family: "inter", "Helvetica Neue", sans-serif, arial;
   transition: all .5s ease-in-out;
   &:focus {
-    background-color: #ffffff;
-    border: 1px solid #002899;
+    background-color: #ffffff !important;
+    border: 1px solid #002899 !important;
   }
 }
 
