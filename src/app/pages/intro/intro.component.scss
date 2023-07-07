@@ -55,6 +55,8 @@ section {
 
     .main-content {
         padding: 48px 100px;
+        max-height: 100vh;
+        overflow: auto;
         p,h2{
             color: var(--text-color);
         }

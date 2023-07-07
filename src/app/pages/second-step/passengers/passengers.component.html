@@ -35,106 +35,122 @@
     </mat-dialog-actions>
 </form> -->
 
-    <section>
-        <header class="d-flex justify-content-between align-items-center">
-            <h2 mat-dialog-title>
-                Add Passengers
-            </h2>
-            <button mat-button routerLink="/2" type="button">
-                <mat-icon>
-                    keyboard_backspace
-                </mat-icon>
-                Back to booking
-            </button>
-        </header>
+<section>
+    <header class="d-flex justify-content-between align-items-center">
+        <h2 mat-dialog-title>
+            Add Passengers
+        </h2>
+        <button mat-button routerLink="/2" type="button">
+            <mat-icon>
+                keyboard_backspace
+            </mat-icon>
+            Back to booking
+        </button>
+    </header>
 
-        <mat-list >
-            <mat-list-item *ngFor="let passenger of passengersList">
+    <mat-list >
+        <ng-container *ngFor="let passenger of passengersList; index as i">
+            <mat-list-item>
                 <div matListItemTitle class="d-flex justify-content-between">
                     <span>
-                        Ahmed mamdoh
+                        {{ passenger.name }}
                         <span class="light">
                             (Male)
                         </span>
                     </span>
-                    <span class="light">
-                        Saudi Arabia
+                    <span class="light" *ngIf="passenger.phone">
+                        {{ passenger.phone.countryName }}
                     </span>
                     <div class="d-flex action-btns">
                         <button mat-button class="edit">
                             Edit
                         </button>
-                        <span class="pipe"></span>
-                        <button mat-button class="delete">
-                            Edit
-                        </button>
+                        <ng-container *ngIf="i !== 0">
+                            <span class="pipe"></span>
+                            <button mat-button class="delete" (click)="delete(i)">
+                                Delete
+                            </button>
+                        </ng-container>
                     </div>
                 </div>
-                <div matListItemLine class="d-flex justify-content-between">
+                <div *ngIf="passenger.phone" matListItemLine class="d-flex justify-content-between">
                     <span>
-                        +9963154853
+                        {{ passenger.phone.e164Number }}
                     </span>
                     <span>
-                        amamdoh@mail.com
+                        {{ passenger.email }}
                     </span>
                 </div>
 
             </mat-list-item>
-        </mat-list>
-       
-        <form [formGroup]="passengersForm" (submit)="submit()">
-            <div class="row">
-                <div class="form-group col-md-7 mb-3">
-                    <input type="text" placeholder="Passenger Name" formControlName="name">
-                </div>
-                <div class="form-group col-md-5 mb-3" >
-                    <mat-radio-group formControlName="gender" aria-label="Select a gender" class="d-flex justify-content-end" color="primary">
-                        <mat-radio-button [value]="1">Male</mat-radio-button>
-                        <mat-radio-button [value]="2">Female</mat-radio-button>
-                    </mat-radio-group>
-                </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+        
+
+    </mat-list>
     
-                <div class="col-md-6 form-group mb-3">
-                    <ngx-intl-tel-input
-                    [cssClass]="'custom'"
-                    [preferredCountries]="preferredCountries"
-                    [enableAutoCountrySelect]="false"
-                    [enablePlaceholder]="true"
-                    [searchCountryFlag]="true"
-                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-                    [selectFirstCountry]="false"
-                    [selectedCountryISO]="passengersForm.controls.phone.value?.countryCode || CountryISO.Turkey"
-                    [maxLength]="15"
-                    [phoneValidation]="true"
-                    inputId="my-input-id"
-                    name="phone"
-                    formControlName="phone"
-                    customPlaceholder="Phone Number"
-                    ></ngx-intl-tel-input>
-                </div>
-                <div class="col-md-6 form-group mb-3">
-                    <input type="email" placeholder="Email" formControlName="email">
-                </div>
-    
-                <div class="col-md-12 d-flex justify-content-center">
-                    <button mat-button class="submit-btn">
-                        <mat-icon>add</mat-icon>
-                        Add More Passenger
-                    </button>
-                </div>
+    <form [formGroup]="passengersForm"  #f="ngForm" (submit)="submit(f)" *ngIf="passengersForm">
+        <header class="mb-3" *ngIf="passengersList.length != 0">
+            <h2 mat-dialog-title>
+                Add Passengers
+            </h2>
+        </header>
+        <div class="row">
+            <div class="form-group col-md-7 mb-3">
+                <input type="text" placeholder="Passenger Name" formControlName="name">
             </div>
-        </form>
+            <div class="form-group col-md-5 mb-3" >
+                <mat-radio-group formControlName="gender" aria-label="Select a gender" class="d-flex justify-content-end" color="primary">
+                    <mat-radio-button [value]="1">Male</mat-radio-button>
+                    <mat-radio-button [value]="2">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="col-md-6 form-group mb-3" *ngIf="passengersForm.controls.phone">
+                <ngx-intl-tel-input
+                [cssClass]="'custom'"
+                [preferredCountries]="preferredCountries"
+                [enableAutoCountrySelect]="false"
+                [enablePlaceholder]="true"
+                [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectFirstCountry]="false"
+                [selectedCountryISO]="passengersForm.controls.phone.value?.countryCode || CountryISO.Turkey"
+                [maxLength]="15"
+                [phoneValidation]="true"
+                inputId="my-input-id"
+                name="phone"
+                formControlName="phone"
+                customPlaceholder="Phone Number"
+                ></ngx-intl-tel-input>
+            </div>
+            <div class="col-md-6 form-group mb-3" *ngIf="passengersForm.controls.email">
+                <input type="email" placeholder="Email" formControlName="email">
+            </div>
+
+            <div class="col-md-12 d-flex justify-content-center">
+                <button mat-button class="submit-btn">
+                    <mat-icon>add</mat-icon>
+                    Add More Passenger
+                </button>
+            </div>
+        </div>
+    </form>
 
 
-        <!-- <ngx-mat-intl-tel-input
-        [preferredCountries]="['us', 'gb']"
-        [enablePlaceholder]="true"
-        [enableSearch]="true"
-        name="phone"
-        formControlName="phone"
-        #phone
-        ></ngx-mat-intl-tel-input> -->
+    <!-- <ngx-mat-intl-tel-input
+    [preferredCountries]="['us', 'gb']"
+    [enablePlaceholder]="true"
+    [enableSearch]="true"
+    name="phone"
+    formControlName="phone"
+    #phone
+    ></ngx-mat-intl-tel-input> -->
 
-       
-       
-    </section>
+    
+    <footer>
+        <button mat-raised-button [disabled]="passengersList.length  == 0" color="primary">
+            Done
+        </button>
+    </footer>
+</section>

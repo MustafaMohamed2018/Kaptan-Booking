@@ -14,11 +14,17 @@
             padding-right: 12px;
         }
     }
-   
+   form.ng-pristine ::ng-deep app-error{
+        display: none;
+   }
     ::ng-deep app-error {
         display: block;
         // text-align: center;
         // margin-top: 16px;
+    }
+
+    mat-divider {
+        margin: 10px 0;
     }
 }
 
@@ -76,7 +82,7 @@ section {
     mat-list {
         padding: 0;
         mat-list-item {
-            padding: 20px 0;
+            padding: 10px 0;
             height: auto;
             div {
                 align-items: center;
@@ -107,19 +113,30 @@ section {
                         &.delete{
                             color: #D20000;
                         }
+                        span.pipe {
+                            width: 1px;
+                            height: 24px;
+                            background: #E9E9E9;
+                            margin-left: 8px;
+                            margin-right: 8px;
+                        }
                     }
                 }
             }
             div.mdc-list-item__secondary-text {
                 color: #101010;
-                font-size: 14px;
                 margin-top: 10px;
+                span {
+                    font-size: 14px;
+                }
             }
         }
     }
 }
 form {
     display: inline-block;
+    animation: fade .5s;
+    padding-top: 10px;
     input {
         background-color: #F2F5F8;
         border: 1px solid #E9E9E9;
@@ -139,5 +156,23 @@ form {
             font-size: 23px;
             font-weight: bold;
         }
+    }
+}
+
+@-webkit-keyframes fade {
+    0% {
+    
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+@keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
 }

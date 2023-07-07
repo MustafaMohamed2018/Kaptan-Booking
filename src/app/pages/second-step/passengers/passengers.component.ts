@@ -32,31 +32,47 @@ export class PassengersComponent {
 
   addPassenger(data = {}) {
     // let passengers = this.passengersForm.controls.passengers as FormArray;
+    this.passengersForm = null;
 
-    this.passengersForm = new FormGroup({
-      name:new FormControl(null, Validators.required),
-      gender: new FormControl(1, Validators.required),
-    });
+    
+    // setTimeout(() => {
+      this.passengersForm = new FormGroup({
+        name:new FormControl(null, Validators.required),
+        gender: new FormControl(1, Validators.required),
+      });
 
-    let phonev = {"number":"+201024267254","internationalNumber":"+20 102 426 7254","nationalNumber":"0102 426 7254","e164Number":"+201024267254","countryCode":"EG","dialCode":"+20"}
-    if(!this.passengersList.length) {
-      this.passengersForm.addControl('email',  new FormControl(null, [Validators.required, Validators.email]) );
-      this.passengersForm.addControl('phone',  new FormControl(phonev, [Validators.required]) );
-    }
-    this.passengersForm.patchValue(data);
+  
+      let phonev = {"number":"+201024267254","internationalNumber":"+20 102 426 7254","nationalNumber":"0102 426 7254","e164Number":"+201024267254","countryCode":"EG","dialCode":"+20"}
+      if(!this.passengersList.length) {
+        this.passengersForm.addControl('email',  new FormControl(null, [Validators.required, Validators.email]) );
+        this.passengersForm.addControl('phone',  new FormControl(phonev, [Validators.required]) );
+      }
+      
+      this.passengersForm.patchValue(data);
+    // })
 
     
   }
 
+  delete(i) {
+    this.passengersList.splice(i,1);
+  }
 
-  submit () {
+  submit (f) {
     console.log(this.passengersForm);
-    
+
     if(this.passengersForm.valid) {
       let value = {...this.passengersForm.value};
-      value.phone.countryName = this.CountryISOReversed[value.phone.countryCode.toLowerCase()]
+      if(value.phone) {
+        value.phone.countryName = this.CountryISOReversed[value.phone.countryCode.toLowerCase()]
+      }
       this.passengersList.push(value);
+
       console.log(this.passengersList);
+
+      f.resetForm();
+      this.addPassenger();
+      // f.resetForm();
     }
   }
 
