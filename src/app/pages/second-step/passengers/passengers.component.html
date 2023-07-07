@@ -55,7 +55,7 @@
                     <span>
                         {{ passenger.name }}
                         <span class="light">
-                            (Male)
+                            ({{ Gender[passenger.gender] }})
                         </span>
                     </span>
                     <span class="light" *ngIf="passenger.phone">

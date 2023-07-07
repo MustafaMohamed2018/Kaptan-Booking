@@ -27,6 +27,7 @@ export class ThirdStepComponent {
   firstForm;
   ngOnInit(): void {
     this.formGroup = this.form.controls.second;
+    this.firstForm = this.form.controls.first;
 
     console.log(this.formGroup)
   }

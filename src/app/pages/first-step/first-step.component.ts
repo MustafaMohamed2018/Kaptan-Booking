@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Airport, FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-first-step',
@@ -8,7 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./first-step.component.scss']
 })
 export class FirstStepComponent implements OnInit {
-  parent
+  Airport = Airport;
+  FlightType = FlightType;
+  parent;
   constructor(
     private router:Router,
     private activedRoute:ActivatedRoute
@@ -20,9 +23,10 @@ export class FirstStepComponent implements OnInit {
 
   form:any;
 
+
   changeType(value) {
     console.log(value);
-    if(value == 'up') {
+    if(value == FlightType.ToAirPort) {
       this.formGroup.controls['tripNumber'].setValidators(null);
       this.formGroup.controls['tripNumber'].updateValueAndValidity();
       this.form.updateValueAndValidity();

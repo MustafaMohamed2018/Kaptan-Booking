@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Airport, FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-intro',
@@ -23,8 +24,8 @@ export class IntroComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       first: new FormGroup({
-        type:new FormControl(null, Validators.required),
-        airport:new FormControl(null, Validators.required),
+        type:new FormControl(FlightType.FromAirPort, Validators.required),
+        airport:new FormControl(Airport.Istanbul, Validators.required),
         tripNumber:new FormControl(null, Validators.required),
         deliveryLocation:new FormControl(null, Validators.required),
       }),

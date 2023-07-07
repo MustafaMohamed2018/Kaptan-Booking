@@ -63,6 +63,7 @@ section {
             display: inline-block;
             .router-cont {
                 max-height: calc(100vh - 152px);
+                min-height: calc(100vh - 152px);
                 overflow: auto;
                 padding-right: 16px;
             }

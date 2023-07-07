@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
+import { Gender } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-passenger-form',
@@ -12,7 +13,8 @@ export class PassengerFormComponent {
   @Input('inEdit') inEdit = false;
 
   @Output('btnClicked') btnClicked = new EventEmitter();
-
+  Gender = Gender;
+  
 
   separateDialCode = false;
 	SearchCountryField = SearchCountryField;
@@ -22,6 +24,7 @@ export class PassengerFormComponent {
 
 
   submit(f) {
+    console.log(this.passengerForm)
     if(this.passengerForm.valid) this.btnClicked.emit(true)
   }
   

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
+import { Gender } from 'src/app/shared/enums/enums';
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
 @Component({
@@ -36,12 +37,13 @@ export class PassengersComponent implements OnInit {
     this.passengersList = this.form.controls.second.controls.passengers.value || [];
   }
 
+  Gender = Gender;
 
   addPassenger(data = {}) {
     this.passengersForm = null;
     this.passengersForm = new FormGroup({
       name:new FormControl(null, Validators.required),
-      gender: new FormControl(1, Validators.required),
+      gender: new FormControl(Gender.Male, Validators.required),
     });
 
 
@@ -62,7 +64,7 @@ export class PassengersComponent implements OnInit {
 
     this.editForm = new FormGroup({
       name:new FormControl(null, Validators.required),
-      gender: new FormControl(1, Validators.required),
+      gender: new FormControl(Gender.Male, Validators.required),
     });
 
     if(index === 0) {

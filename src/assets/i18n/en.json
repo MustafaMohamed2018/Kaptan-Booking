@@ -1,5 +1,6 @@
 {
   "Errors":{
-    "required":"This field is required"
+    "required":"This field is required",
+    "ValidatePhoneNumber":"This phone is not valid."
 }
 }

@@ -49,6 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
         cantBeNegative:'Errors.cantBeNegative',
         notValidInteger:'Errors.notValidInteger',
         NoZeros:'قيمة غير صالحة',
+        validatePhoneNumber:'Errors.ValidatePhoneNumber'
       },
       errorTemplate: ErrorComponent,
       targetSelector: '.form-group',

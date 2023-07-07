@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" (ngSubmit)="save()">
     <div class="form-group mb-4">
         <mat-button-toggle-group class="type" formControlName="type" (change)="changeType($event.value)">
-            <mat-button-toggle value="down">
+            <mat-button-toggle [value]="FlightType.FromAirPort">
                 <div class="content">
                     <div class="d-flex justify-content-between align-items-center">
                         <mat-icon svgIcon="plan-down"></mat-icon>
@@ -19,7 +19,7 @@
     
             <span style="width: 16px;"></span>
     
-            <mat-button-toggle value="up">
+            <mat-button-toggle [value]="FlightType.ToAirPort">
                 <div class="content">
                     <div class="d-flex justify-content-between align-items-center">
                         <mat-icon svgIcon="plan-up"></mat-icon>
@@ -42,7 +42,7 @@
             Select airport
         </label>
         <mat-button-toggle-group formControlName="airport" class="row-btns" >
-            <mat-button-toggle value="Istanbul Airport" class="mb-3">
+            <mat-button-toggle [value]="Airport.Istanbul" class="mb-3">
                 <div class="content">
                     <span class="check-cont">
                         <mat-icon>
@@ -54,7 +54,7 @@
                     </p>
                 </div>
             </mat-button-toggle>
-            <mat-button-toggle value="Sabiha Airport">
+            <mat-button-toggle [value]="Airport.Sabiha">
                 <div class="content">
                     <span class="check-cont">
                         <mat-icon>
@@ -69,7 +69,7 @@
         </mat-button-toggle-group>
     </div>
 
-    <div class="mb-3 form-group" *ngIf="formGroup.controls['type'].value == 'down' ">
+    <div class="mb-3 form-group" *ngIf="formGroup.controls['type'].value == FlightType.FromAirPort ">
         <label class="d-flex align-items-center input-label" for="flight">
             <mat-icon>
                 flight
