@@ -152,6 +152,7 @@ body { margin: 0; font-family: "inter","Helvetica Neue", sans-serif, arial; }
 }
 
 .time-dialog.mat-mdc-dialog-container{
+  // max-width: none !important;
   .mat-mdc-dialog-surface.mdc-dialog__surface {
     border-radius: 24px;
   }

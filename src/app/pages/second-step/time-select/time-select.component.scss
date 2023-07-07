@@ -1,6 +1,7 @@
 :host {
-    min-width: 80vw;
+    width: 95vw;
     display: block;
+    max-width: 850px;
     h2 {
         font-size: 17px;
         margin-top: 1rem;
@@ -27,5 +28,13 @@
         display: block;
         text-align: center;
         margin-top: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    mat-dialog-actions {
+        button.mdc-button {
+            width: 120px;
+        }
     }
 }
