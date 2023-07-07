@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from '../second-step/time-select/time-select.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Airport, FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-third-step',
@@ -12,7 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class ThirdStepComponent {
   parent;
   form;
-
+  Airport = Airport;
+  
   constructor(
     private activedRoute:ActivatedRoute,
     private router:Router,

@@ -63,6 +63,27 @@ form {
     }
 }
 
+ngx-intl-tel-input {
+    ::ng-deep{
+        input {
+            background-color: #F2F5F8;
+            border: 1px solid #E9E9E9;
+        }
+        // iti iti--allow-dropdown
+        .iti--allow-dropdown {
+            width: 100%;
+            display: flex;
+            // flex-direction: row-reverse;
+            .flag-container {
+                position: static;
+                .dropdown-menu.country-dropdown.show {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
 @-webkit-keyframes fade {
     0% {
     

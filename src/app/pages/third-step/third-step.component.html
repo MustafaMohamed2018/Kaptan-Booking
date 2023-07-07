@@ -20,7 +20,7 @@
                         From
                     </span>
                     <p>
-                        {{ firstForm.value.airport  }}
+                        {{ Airport[firstForm.value.airport] | translate  }}
                     </p>
                 </div>
                 <mat-icon svgIcon="arrows"></mat-icon>
@@ -43,7 +43,6 @@
         </div>
 
     </mat-list>
-
 
     <mat-card  >
         <mat-card-content>

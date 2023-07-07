@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
-import { PassengersComponent } from './passengers/passengers.component';
+import { Airport } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-second-step',
@@ -12,7 +12,8 @@ import { PassengersComponent } from './passengers/passengers.component';
 })
 export class SecondStepComponent {
   parent
-
+  Airport = Airport;
+  
   constructor(
     private router:Router,
     private dialog:MatDialog,

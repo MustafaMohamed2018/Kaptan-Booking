@@ -1,6 +1,11 @@
 {
   "Errors":{
     "required":"This field is required",
-    "ValidatePhoneNumber":"This phone is not valid."
-}
+    "validatePhoneNumber":"This phone is not valid.",
+    "email":"This is not a valid email."
+  },
+  "Istanbul":"Istanbul Airport",
+  "Sabiha":"Sabiha Airport"
+
+
 }
