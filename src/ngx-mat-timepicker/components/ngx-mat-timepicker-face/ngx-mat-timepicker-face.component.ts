@@ -205,7 +205,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
         this.isClockFaceDisabled = this.faceTime.every(time => time.disabled);
 
         if ((currentTime && currentTime.disabled) && !this.isClockFaceDisabled) {
-            const availableTime = this.faceTime.find(time => !time.disabled);
+            const availableTime:any = this.faceTime.find(time => !time.disabled);
 
             this.timeChange.next(availableTime);
         }

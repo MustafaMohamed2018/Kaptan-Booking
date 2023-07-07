@@ -59,10 +59,8 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
                 // @Inject(NGX_MAT_TIMEPICKER_CONFIG) public data: NgxMatTimepickerConfig
                 ) {
                 this.data = this._timepickerLocaleSrv.config;
-                console.log(this.data);
         this.color = this.data.color;
         this.defaultTime = this.data.defaultTime;
-        console.log('this.data', this.data);
 
     }
 
@@ -85,11 +83,8 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log('_defineTime', this.data);
 
-    setTimeout(()=> {
-        console.log('_defineTime', this.data);
-
+    // setTimeout(()=> {
         this._defineTime();
         this.selectedHour = this._timepickerSrv.selectedHour
             .pipe(shareReplay({bufferSize: 1, refCount: true}));
@@ -99,7 +94,8 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
             .pipe(shareReplay({bufferSize: 1, refCount: true}));
         this.data.timepickerBaseRef.timeUpdated.pipe(takeUntil(this._subsCtrl$))
             .subscribe(this._setDefaultTime.bind(this));
-    })
+            console.log('this.selectedHour',this.selectedHour)
+    // })
     }
 
     onHourChange(hour: NgxMatTimepickerClockFace): void {

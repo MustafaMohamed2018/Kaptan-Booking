@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TimeSelectComponent } from './time-select/time-select.component';
 
 @Component({
   selector: 'app-second-step',
@@ -12,26 +13,18 @@ export class SecondStepComponent {
   constructor(
     private router:Router,
     private dialog:MatDialog
-  ) {}
+  ) {
+  }
   
+
   form:any;
 
-  changeType(value) {
-    console.log(value);
-    // if(value == 'up') {
-    //   this.formGroup.controls['tripNumber'].setValidators(null);
-    //   this.formGroup.controls['tripNumber'].updateValueAndValidity();
-    //   this.form.updateValueAndValidity();
-    // } else {
-    //   this.formGroup.controls['tripNumber'].setValidators(Validators.required);
-    //   this.formGroup.controls['tripNumber'].updateValueAndValidity();
-    //   this.form.updateValueAndValidity();
-    // }
-  }
 
   formGroup:FormGroup;
+  firstForm;
   ngOnInit(): void {
-    this.formGroup = this.form.controls.first;
+    this.formGroup = this.form.controls.second;
+    this.firstForm = this.form.controls.first;
 
     console.log(this.formGroup)
   }
@@ -42,4 +35,29 @@ export class SecondStepComponent {
       this.router.navigate(['/2'])
     }
   }
+
+
+  openDialog() {
+    let date = new Date();
+    if(this.formGroup.controls['date'].value) date = new Date(this.formGroup.controls['date'].value);
+    else {
+      date.setDate(date.getDate() + 1)
+    }
+    let data = {
+      date: date,
+      time: this.formGroup.controls['time'].value || new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    }
+    const dialogRef = this.dialog.open(TimeSelectComponent, {
+      panelClass:'time-dialog',
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: `, result);
+      if(result) this.formGroup.setValue(result);
+    });
+  }
+  
+
+
 }

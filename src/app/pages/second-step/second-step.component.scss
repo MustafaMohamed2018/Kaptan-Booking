@@ -21,3 +21,41 @@
         height: 36px;
     }
 }
+
+mat-list {
+    mat-list-item {
+        cursor: pointer;
+        padding: 0;
+        border-radius: 8px;
+        mat-icon.mat-mdc-list-item-icon {
+            margin: 0 13px;
+        }
+        div {
+            span {
+                font-size: 14px;
+            }
+            mat-icon {
+                margin: 0px 6px;
+            }
+        }
+        &:hover {
+            background-color: rgba(0,0,0,.05);
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    
+    .airport-info {
+        flex-direction: column;
+        align-items: center;
+        mat-icon {
+            transform: rotate(90deg);
+            height: 30px;
+            width: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}

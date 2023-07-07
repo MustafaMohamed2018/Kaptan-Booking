@@ -1,4 +1,4 @@
-<ng-template #cancelBtnDefault>
+<!-- <ng-template #cancelBtnDefault>
     <button mat-button
             [color]="color">CANCEL
     </button>
@@ -7,33 +7,14 @@
     <button mat-button
             [color]="color">OK
     </button>
-</ng-template>
-<div mat-dialog-content>
+</ng-template> -->
+<!-- <div mat-dialog-content> -->
+<div >
     <ngx-mat-timepicker-content [appendToInput]="data.appendToInput"
                                 [inputElement]="data.inputElement">
         <div class="timepicker"
              [ngClass]="data.timepickerClass">
-            <mat-toolbar [color]="color"
-                         [class.is-editable]="data.enableKeyboardInput"
-                         class="timepicker-header">
-                <ngx-mat-timepicker-dial [color]="color"
-                                         [format]="data.format"
-                                         [hour]="(selectedHour | async)?.time"
-                                         [minute]="(selectedMinute | async)?.time"
-                                         [period]="selectedPeriod | async"
-                                         [activeTimeUnit]="activeTimeUnit"
-                                         [minTime]="data.minTime"
-                                         [maxTime]="data.maxTime"
-                                         [isEditable]="data.enableKeyboardInput"
-                                         [editableHintTmpl]="data.editableHintTmpl"
-                                         [minutesGap]="data.minutesGap"
-                                         [hoursOnly]="data.hoursOnly"
-                                         (periodChanged)="changePeriod($event)"
-                                         (timeUnitChanged)="changeTimeUnit($event)"
-                                         (hourChanged)="onHourChange($event)"
-                                         (minuteChanged)="onMinuteChange($event)"
-                ></ngx-mat-timepicker-dial>
-            </mat-toolbar>
+
             <div class="timepicker__main-content">
                 <div class="timepicker__body"
                      [ngSwitch]="activeTimeUnit">
@@ -69,10 +50,33 @@
                                                      (minuteChange)="onMinuteChange($event)"></ngx-mat-timepicker-minutes-face>
                 </div>
             </div>
+
+            <!-- <mat-toolbar [color]="color"
+            [class.is-editable]="data.enableKeyboardInput"
+            class="timepicker-header"> -->
+            <ngx-mat-timepicker-dial [color]="color"
+                                        [format]="data.format"
+                                        [hour]="(selectedHour | async)?.time"
+                                        [minute]="(selectedMinute | async)?.time"
+                                        [period]="selectedPeriod | async"
+                                        [activeTimeUnit]="activeTimeUnit"
+                                        [minTime]="data.minTime"
+                                        [maxTime]="data.maxTime"
+                                        [isEditable]="data.enableKeyboardInput"
+                                        [editableHintTmpl]="data.editableHintTmpl"
+                                        [minutesGap]="data.minutesGap"
+                                        [hoursOnly]="data.hoursOnly"
+                                        (periodChanged)="changePeriod($event)"
+                                        (timeUnitChanged)="changeTimeUnit($event)"
+                                        (hourChanged)="onHourChange($event)"
+                                        (minuteChanged)="onMinuteChange($event)"
+            ></ngx-mat-timepicker-dial>
+            <!-- </mat-toolbar> -->
+
         </div>
     </ngx-mat-timepicker-content>
 </div>
-<div mat-dialog-actions>
+<!-- <div mat-dialog-actions>
     <div (click)="close()">
         <ng-container
                 *ngTemplateOutlet="data.cancelBtnTmpl ? data.cancelBtnTmpl : cancelBtnDefault"></ng-container>
@@ -81,4 +85,4 @@
         <ng-container
                 *ngTemplateOutlet="data.confirmBtnTmpl ? data.confirmBtnTmpl : confirmBtnDefault"></ng-container>
     </div>
-</div>
+</div> -->

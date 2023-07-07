@@ -9,13 +9,20 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from '../shared/shared.module';
 import { SecondStepComponent } from './second-step/second-step.component';
 import { NgxMatTimepickerModule } from 'src/ngx-mat-timepicker/ngx-mat-timepicker.module';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TimeSelectComponent } from './second-step/time-select/time-select.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     IntroComponent,
     FirstStepComponent,
-    SecondStepComponent
+    SecondStepComponent,
+    TimeSelectComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +31,13 @@ import { NgxMatTimepickerModule } from 'src/ngx-mat-timepicker/ngx-mat-timepicke
     MatButtonToggleModule,
     SharedModule,
     NgxMatTimepickerModule,
+    NgxMatTimepickerModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatListModule,
+    MatRippleModule,
+    MatDividerModule
   ]
 })
 export class PagesModule { }

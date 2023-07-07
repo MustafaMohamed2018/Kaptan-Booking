@@ -1,0 +1,31 @@
+:host {
+    min-width: 80vw;
+    display: block;
+    h2 {
+        font-size: 17px;
+        margin-top: 1rem;
+    }
+    mat-calendar {
+        max-width: 350px;
+        margin: auto;
+        margin-top: -16px;
+    }
+    mat-dialog-actions {
+        padding: 8px 18px 30px;
+        button {
+            width: 158px;
+            height: 48px;
+            margin: 0 12px;
+            border-radius: 8px;
+            &:last-of-type {
+                border: 1px solid #E9E9E9;
+                color: #101010;
+            }
+        }
+    }
+    ::ng-deep app-error {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+    }
+}

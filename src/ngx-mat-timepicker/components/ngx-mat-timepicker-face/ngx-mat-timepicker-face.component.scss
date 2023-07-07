@@ -1,7 +1,7 @@
 ngx-mat-timepicker-face {
-
+    pointer-events: none;
 	.clock-face {
-
+		pointer-events: all;
 		width: 290px;
 		height: 290px;
 		border-radius: 50%;
@@ -9,7 +9,13 @@ ngx-mat-timepicker-face {
 		display: flex;
 		justify-content: center;
 		box-sizing: border-box;
-		background-color: rgba(200, 200, 200, 0.5) !important;
+		// background-color: rgba(200, 200, 200, 0.5) !important;
+		background-color: #FBFBFB !important;
+		margin: auto;
+		scale: .8;
+		
+		direction: ltr;
+		text-align: left;
 
 		&__inner {
 			position: absolute;
@@ -17,6 +23,11 @@ ngx-mat-timepicker-face {
 			left: 0;
 			width: 100%;
 			height: 100%;
+		}
+
+		.mdc-button__label{
+			font-size: 16px;
+			font-family: "inter","Helvetica Neue", sans-serif, arial;
 		}
 
 		[mat-mini-fab].mat-void {

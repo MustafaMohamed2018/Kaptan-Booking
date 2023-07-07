@@ -12,7 +12,9 @@
                                          (unfocused)="hideHint()">
 
             </ngx-mat-timepicker-dial-control>
+
             <span>:</span>
+            
             <ngx-mat-timepicker-dial-control [timeList]="minutes"
                                          [time]="minuteString"
                                          [timeUnit]="timeUnit.MINUTE"
@@ -40,11 +42,11 @@
                                    [meridiems]="meridiems"
                                    (periodChanged)="changePeriod($event)"></ngx-mat-timepicker-period>
     </div>
-    <div *ngIf="isEditable || editableHintTmpl"
+    <!-- <div *ngIf="isEditable || editableHintTmpl"
          [ngClass]="{'timepicker-dial__hint-container--hidden': !isHintVisible}">
         <ng-container *ngTemplateOutlet="editableHintTmpl ? editableHintTmpl : editableHintDefault"></ng-container>
         <ng-template #editableHintDefault>
             <small class="timepicker-dial__hint"> * use arrows (<span>&#8645;</span>) to change the time</small>
         </ng-template>
-    </div>
+    </div> -->
 </div>

@@ -1,0 +1,28 @@
+<form [formGroup]="form" (submit)="submit()">
+    <h2 mat-dialog-title>
+        Indicate The Time And Date Of The Trip
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <section>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-calendar [(selected)]="data.date" (selectedChange)="changeDateTime()"></mat-calendar>
+                    <input [hidden]="true" formControlName="date" type="text">
+                </div>
+    
+                <div class="col-md-6 form-group">
+                    <ngx-mat-timepicker [defaultTime]="data.time" [enableKeyboardInput]="true" (timeChanged)="data.time = $event;changeDateTime()"></ngx-mat-timepicker>  
+                    <input [hidden]="true" formControlName="time" type="text">
+                </div>
+            </div>
+        </section>
+    </mat-dialog-content>
+    <mat-dialog-actions >
+        <button mat-raised-button cdkFocusInitial color="primary">
+            Save
+        </button>
+        <button mat-button mat-dialog-close type="button">
+            Re-Set
+        </button>
+    </mat-dialog-actions>
+</form>

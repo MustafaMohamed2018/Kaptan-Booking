@@ -5,7 +5,7 @@ import {By} from "@angular/platform-browser";
 
 @Component({
     template: `
-		<button id="button">Push me</button>
+		<button type="button" id="button">Push me</button>
 		<input [ngxMatTimepickerAutofocus]="true">`
 })
 class TestComponent {
