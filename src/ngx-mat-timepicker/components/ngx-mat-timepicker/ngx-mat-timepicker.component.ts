@@ -209,7 +209,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef, OnInit {
             inputElement: this.inputElement,
             color: this.color
         };
-        console.log('this.config', this.config);
         this.ngxMatTimepickerLocaleService.config = this.config;
         if (this._appendToInput) {
             this.showPicker = !0;
