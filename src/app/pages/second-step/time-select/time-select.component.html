@@ -1,6 +1,6 @@
 <form [formGroup]="form" (submit)="submit()">
     <h2 mat-dialog-title>
-        Indicate The Time And Date Of The Trip
+        {{ 'IndicateTimeAndDate' | translate }}
     </h2>
     <mat-dialog-content class="mat-typography">
         <section>
@@ -19,10 +19,10 @@
     </mat-dialog-content>
     <mat-dialog-actions >
         <button mat-raised-button cdkFocusInitial color="primary">
-            Save
+            {{ 'Save' | translate }}
         </button>
         <button mat-button mat-dialog-close type="button">
-            Re-Set
+            {{ 'Re-Set' | translate }}
         </button>
     </mat-dialog-actions>
 </form>

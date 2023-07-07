@@ -38,13 +38,13 @@
 <section>
     <header class="d-flex justify-content-between align-items-center">
         <h2 mat-dialog-title>
-            Add Passengers
+            {{ 'AddPassengers' | translate }}
         </h2>
         <button mat-button routerLink="/2" type="button">
             <mat-icon>
                 keyboard_backspace
             </mat-icon>
-            Back to booking
+            {{ 'BackToBooking' | translate }}
         </button>
     </header>
 
@@ -63,12 +63,12 @@
                     </span>
                     <div class="d-flex action-btns">
                         <button mat-button class="edit" (click)="editPassenger(i)">
-                            Edit
+                            {{ 'Edit' | translate }}
                         </button>
                         <ng-container *ngIf="i !== 0">
                             <span class="pipe"></span>
                             <button mat-button class="delete" (click)="delete(i)">
-                                Delete
+                                {{ 'Delete' | translate }}
                             </button>
                         </ng-container>
                     </div>

@@ -4,10 +4,10 @@
             <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
             <div matListItemTitle class="d-flex justify-content-between"> 
                 <span>
-                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' - ' + formGroup.controls['time'].value) : 'Plese Add The Date' }}
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' - ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
                 </span>
                 <button mat-button color="primary" (click)="openDialog()">
-                    Change
+                    {{ 'Change' | translate }}
                 </button>
             </div>
         </mat-list-item>
@@ -17,7 +17,7 @@
             <div class=" airport-info  d-flex  justify-content-between">
                 <div>
                     <span>
-                        From
+                        {{ 'From' | translate }}
                     </span>
                     <p>
                         {{ Airport[firstForm.value.airport] | translate  }}
@@ -26,7 +26,7 @@
                 <mat-icon svgIcon="arrows"></mat-icon>
                 <div>
                     <span>
-                        To
+                        {{ 'To' | translate }}
                     </span>
                     <p>
                         {{ firstForm.value.deliveryLocation  }}
@@ -44,7 +44,7 @@
 
     </mat-list>
 
-    <mat-card  >
+    <mat-card>
         <mat-card-content>
             <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
 
@@ -91,20 +91,20 @@
     <form [formGroup]="form">
         <div class="form-group">
             <label for="notes">
-                Before confirming the reservation, do you want to add notes?
+                {{ 'NotesLabel' | translate }}
             </label>
-            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="notes"></textarea>
+            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="notes" [placeholder]="'AddNote' | translate"></textarea>
         </div>
 
         <button mat-raised-button color="primary" class="d-block mb-3">
-            Book Confirmation
+            {{ 'BookConfirmation' | translate }}
         </button>
         <button mat-button type="button" class="d-block" routerLink="/2">
             <mat-icon>
                 keyboard_backspace
             </mat-icon>
             <span>
-                Previous
+                {{ 'Previous' | translate }}
             </span>
         </button>
     </form>
