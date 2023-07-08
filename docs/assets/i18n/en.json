@@ -1,0 +1,41 @@
+{
+  "Errors":{
+    "required":"This field is required",
+    "validatePhoneNumber":"This phone is not valid.",
+    "email":"This is not a valid email."
+  },
+  "Istanbul":"Istanbul Airport",
+  "Sabiha":"Sabiha Airport",
+  "AppTitle":"Lets start a new transfer",
+  "ReservationConfirmation":"Reservation Confirmation",
+  "Title1":"Start A Seamless Journey Across Istanbul With Kaptan",
+  "Title2":"Book Now And Move Around The City Effortlessly",
+  "From":"From",
+  "To":"To",
+  "Passenger":"Passenger",
+  "AddPassengersNumbers":"Add the number of passengers",
+  "Previous":"Previous",
+  "Next":"Next",
+  "Save":"Save",
+  "Re-Set":"Re-Set",
+  "IndicateTimeAndDate":"Indicate The Time And Date Of The Trip",
+  "AddPassengers":"Add Passengers",
+  "Add":"Add",
+  "Edit":"Edit",
+  "Delete":"Delete",
+  "BackToBooking":"Back to booking",
+  "Passengers":"Passengers",
+  "PhoneNumber":"Phone Number",
+  "AddMore":"Add More Passenger",
+  "Email":"Email",
+  "Cancel":"Cancel",
+  "PassengerName":"Passenger Name",
+  "Change":"Change",
+  "AddDate":"Plese Add The Date",
+  "NotesLabel":"Before confirming the reservation, do you want to add notes?",
+  "AddNote":"Add note",
+  "BookConfirmation":"Book Confirmation"
+
+
+
+}
