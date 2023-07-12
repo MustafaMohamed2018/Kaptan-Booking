@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
 import { Airport } from 'src/app/shared/enums/enums';
+import { ApiService } from 'src/app/api.service';
+import { combineLatest, forkJoin, startWith, zip } from 'rxjs';
 
 @Component({
   selector: 'app-second-step',
@@ -12,12 +14,13 @@ import { Airport } from 'src/app/shared/enums/enums';
 })
 export class SecondStepComponent {
   parent
-  Airport = Airport;
+  Airport = {};
   
   constructor(
     private router:Router,
     private dialog:MatDialog,
-    private activedRoute:ActivatedRoute
+    private activedRoute:ActivatedRoute,
+    public  apiService:ApiService
   ) {
     setTimeout(() => {
       this.parent.step = this.activedRoute.snapshot.data.step
@@ -31,18 +34,69 @@ export class SecondStepComponent {
   formGroup:FormGroup;
   firstForm;
   ngOnInit(): void {
+    this.Airport = this.apiService.assets['airportsEnum'];
+
     this.formGroup = this.form.controls.second;
     this.firstForm = this.form.controls.first;
 
-    console.log(this.formGroup)
+    // combineLatest([
+    //   (this.form.controls.first as FormGroup).controls.type.valueChanges,
+    //   (this.form.controls.second as FormGroup).controls.passengers.valueChanges
+    // ]).pipe(
+    //   startWith([
+    //     (this.form.controls.first as FormGroup).controls.type.value,
+    //     (this.form.controls.second as FormGroup).controls.passengers.value
+    //   ]),
+    // ).subscribe(r => {
+    //   console.log('combineLatest', r);
+    //   let params = {
+    //     type : r[0],
+    //     number_of_customer : r[1]?.length,
+    //     airport_id : this.form.controls.first.value.airport_id
+    //   };
+  
+    //   this.apiService.cars = [];
+    //   if(params.number_of_customer) this.apiService.getCars(params).subscribe(data => {
+    //     this.apiService.cars = data['cars']
+    //   })
+    // });
+
+    // zip([
+    //   (this.form.controls.first as FormGroup).controls.type.valueChanges,
+    //   (this.form.controls.second as FormGroup).controls.passengers.valueChanges
+    // ]).pipe(
+    //   startWith([
+    //     (this.form.controls.first as FormGroup).controls.type.value,
+    //     (this.form.controls.second as FormGroup).controls.passengers.value
+    //   ]),
+    // ).subscribe(r => {
+    //   console.log('zip', r);
+    //   let params = {
+    //     type : r[0],
+    //     number_of_customer : r[1]?.length,
+    //     airport_id : this.form.controls.first.value.airport_id
+    //   };
+  
+    //   this.apiService.cars = [];
+    //   if(params.number_of_customer) this.apiService.getCars(params).subscribe(data => {
+    //     this.apiService.cars = data['cars']
+    //   })
+    // });
+
   }
   
+  selectCar(car) {
+    this.formGroup.controls.car_model_id.setValue(car.id);
+    this.apiService.selectedCar = car;
+  }
+
   save() {
     console.log(this.form);
     if(this.form.valid) {
       this.router.navigate(['/2'])
     }
   }
+
 
 
   openDialog() {
@@ -53,7 +107,7 @@ export class SecondStepComponent {
     }
     let data = {
       date: date,
-      time: this.formGroup.controls['time'].value || new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+      time: this.formGroup.controls['time'].value || new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
     }
     const dialogRef = this.dialog.open(TimeSelectComponent, {
       panelClass:'time-dialog',

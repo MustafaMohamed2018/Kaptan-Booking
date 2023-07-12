@@ -10,7 +10,7 @@
             <div class="steps">
                 <span *ngFor="let i of [1,2,3]" [class.active]="i <= step"></span>
             </div>
-            <div class="router-cont">
+            <div class="router-cont" *ngIf="apiService.assets">
                 <router-outlet (activate)="activateRoute($event)"></router-outlet>
             </div>
         </div>

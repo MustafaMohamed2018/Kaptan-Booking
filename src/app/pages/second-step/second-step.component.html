@@ -4,7 +4,7 @@
             {{ 'From' | translate }}
         </span>
         <p>
-            {{ Airport[firstForm.value.airport] | translate  }}
+            {{ Airport[firstForm.value.airport_id] | translate  }}
         </p>
     </div>
     <mat-icon svgIcon="arrows"></mat-icon>
@@ -13,7 +13,7 @@
             {{ 'To' | translate }}
         </span>
         <p>
-            {{ firstForm.value.deliveryLocation  }}
+            {{ firstForm.value.delivery_location  }}
         </p>
     </div>
 </div>
@@ -48,42 +48,46 @@
     </mat-list-item>
 
     <mat-list>
-        <mat-card matRipple *ngFor="let i of [1,2,3,4,5,6]" [class.selected]="formGroup.controls.car.value == i" (click)="formGroup.controls.car.setValue(i)">
+        <mat-card matRipple *ngFor="let car of apiService.cars"
+        [class.selected]="formGroup.controls.car_model_id.value == car.id"
+        (click)="selectCar(car)">
             <mat-card-content>
-                <img mat-card-sm-image src="assets/imgs/DSC_0356222.jpg" >
+                <img mat-card-sm-image [src]="car.image" loading="lazy">
 
                 <div>
                     <h3>
-                        Economy VAN
+                        {{ car.name }}
                     </h3>
                     <p>
-                        Mercedes Vito etc
+                        {{ car.description }}
                     </p>
                     <div class="details">
                         <span>
                             <mat-icon svgIcon="users"></mat-icon>
-                            Max 5
+                            Max 
+                            {{ car.max_seats }}
                         </span>
 
                         <span class="dot"></span>
 
                         <span>
                             <mat-icon >business_center</mat-icon>
-                            Max 5
+                            Max
+                            {{ car.max_bags }}
                         </span>
 
                         <span class="dot"></span>
 
                         <span>
                             <mat-icon>airport_shuttle</mat-icon>
-                            Private Car
+                            {{car.type}}
                         </span>
                         
                     </div>
 
                     <p class="price p-0 m-0" >
                         <span>
-                            125
+                            {{ car.price }}
                         </span>
                         tl
                     </p>

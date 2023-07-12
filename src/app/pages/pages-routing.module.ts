@@ -15,28 +15,32 @@ const routes: Routes = [
         path:'1',
         component:FirstStepComponent,
         data:{
-          step:1
+          step:1,
+          reuseComponent:true
         }
       },
       {
         path:'2',
         component:SecondStepComponent,
         data:{
-          step:2
+          step:2,
+          reuseComponent:true
         }
       },
       {
         path:'add-passenger',
         component:PassengersComponent,
         data:{
-          step:2
+          step:2,
+          reuseComponent:true
         }
       },
       {
         path:'3',
         component: ThirdStepComponent,
         data:{
-          step:3
+          step:3,
+          reuseComponent:true
         }
       },
       {

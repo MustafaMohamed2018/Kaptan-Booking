@@ -6,7 +6,7 @@
         <section>
             <div class="row">
                 <div class="col-md-6">
-                    <mat-calendar [(selected)]="data.date" (selectedChange)="changeDateTime()"></mat-calendar>
+                    <mat-calendar [minDate]="min" [(selected)]="data.date" (selectedChange)="changeDateTime()"></mat-calendar>
                     <input [hidden]="true" formControlName="date" type="text">
                 </div>
     
@@ -21,7 +21,7 @@
         <button mat-raised-button cdkFocusInitial color="primary">
             {{ 'Save' | translate }}
         </button>
-        <button mat-button mat-dialog-close type="button">
+        <button mat-button  type="button" (click)="reset()">
             {{ 'Re-Set' | translate }}
         </button>
     </mat-dialog-actions>

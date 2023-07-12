@@ -10,10 +10,9 @@ export enum Airport {
 
 
 export enum FlightType {
-    FromAirPort = 1,
-    ToAirPort = 2
+    FromAirPort = 'arrival',
+    ToAirPort = 'departure'
 }
-
 
 export function mapEnumToOptions(_enum) {
     const options = [];

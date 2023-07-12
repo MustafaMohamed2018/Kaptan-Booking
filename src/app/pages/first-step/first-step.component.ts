@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 import { Airport, FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
@@ -14,7 +15,8 @@ export class FirstStepComponent implements OnInit {
   parent;
   constructor(
     private router:Router,
-    private activedRoute:ActivatedRoute
+    private activedRoute:ActivatedRoute,
+    public apiService:ApiService
   ) {
     setTimeout(() => {
       this.parent.step = this.activedRoute.snapshot.data.step
@@ -27,12 +29,19 @@ export class FirstStepComponent implements OnInit {
   changeType(value) {
     console.log(value);
     if(value == FlightType.ToAirPort) {
-      this.formGroup.controls['tripNumber'].setValidators(null);
-      this.formGroup.controls['tripNumber'].updateValueAndValidity();
+      this.formGroup.controls['trip_number'].setValidators(null);
+      this.formGroup.controls['trip_number'].updateValueAndValidity();
+
+      this.formGroup.controls['room_number'].setValidators(Validators.required);
+      this.formGroup.controls['room_number'].updateValueAndValidity();
       this.form.updateValueAndValidity();
     } else {
-      this.formGroup.controls['tripNumber'].setValidators(Validators.required);
-      this.formGroup.controls['tripNumber'].updateValueAndValidity();
+      this.formGroup.controls['trip_number'].setValidators(Validators.required);
+      this.formGroup.controls['trip_number'].updateValueAndValidity();
+
+      this.formGroup.controls['room_number'].setValidators(null);
+      this.formGroup.controls['room_number'].updateValueAndValidity();
+      
       this.form.updateValueAndValidity();
     }
   }

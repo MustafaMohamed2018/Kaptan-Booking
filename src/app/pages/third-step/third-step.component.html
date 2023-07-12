@@ -20,7 +20,7 @@
                         {{ 'From' | translate }}
                     </span>
                     <p>
-                        {{ Airport[firstForm.value.airport] | translate  }}
+                        {{ Airport[firstForm.value.airport_id] | translate  }}
                     </p>
                 </div>
                 <mat-icon svgIcon="arrows"></mat-icon>
@@ -44,42 +44,44 @@
 
     </mat-list>
 
-    <mat-card>
+    <mat-card *ngIf="apiService.selectedCar">
         <mat-card-content>
-            <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            <img mat-card-sm-image [src]="apiService.selectedCar.image" >
 
             <div>
                 <h3>
-                    Economy VAN
+                    {{ apiService.selectedCar.name }}
                 </h3>
                 <p>
-                    Mercedes Vito etc
+                    {{ apiService.selectedCar.description }}
                 </p>
                 <div class="details">
                     <span>
                         <mat-icon svgIcon="users"></mat-icon>
-                        Max 5
+                        Max 
+                        {{ apiService.selectedCar.max_seats }}
                     </span>
 
                     <span class="dot"></span>
 
                     <span>
                         <mat-icon >business_center</mat-icon>
-                        Max 5
+                        Max
+                        {{ apiService.selectedCar.max_bags }}
                     </span>
 
                     <span class="dot"></span>
 
                     <span>
                         <mat-icon>airport_shuttle</mat-icon>
-                        Private Car
+                        {{apiService.selectedCar.type}}
                     </span>
                     
                 </div>
 
                 <p class="price p-0 m-0" >
                     <span>
-                        125
+                        {{ apiService.selectedCar.price }}
                     </span>
                     tl
                 </p>
@@ -93,10 +95,10 @@
             <label for="notes">
                 {{ 'NotesLabel' | translate }}
             </label>
-            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="notes" [placeholder]="'AddNote' | translate"></textarea>
+            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="guest_notes" [placeholder]="'AddNote' | translate"></textarea>
         </div>
 
-        <button mat-raised-button color="primary" class="d-block mb-3">
+        <button mat-raised-button color="primary" class="d-block mb-3" (click)="save()">
             {{ 'BookConfirmation' | translate }}
         </button>
         <button mat-button type="button" class="d-block" routerLink="/2">

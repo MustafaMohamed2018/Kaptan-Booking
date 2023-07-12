@@ -8,6 +8,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
   styleUrls: ['./time-select.component.scss']
 })
 export class TimeSelectComponent implements OnInit{
+  min = new Date();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
@@ -49,6 +50,18 @@ export class TimeSelectComponent implements OnInit{
     console.log('submit');
     if(this.form.invalid) return;
     this.dialogRef.close(this.data)
+  }
+  
+  reset() {
+    const currentDate = new Date();
+    const clock = currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false });
+
+    this.data.date = currentDate;
+    this.data.time = clock;
+
+    this.form.controls['date'].setValue(currentDate);
+
+    this.form.controls['time'].setValue(clock)
   }
 
 }

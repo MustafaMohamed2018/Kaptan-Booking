@@ -10,6 +10,8 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorComponent } from './shared/error.component';
+import { AppRouteReuseStrategy } from './router-custome-strategy';
+import { RouteReuseStrategy } from '@angular/router';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +57,9 @@ export function createTranslateLoader(http: HttpClient) {
       targetSelector: '.form-group',
     }),
   ],
-  providers: [],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

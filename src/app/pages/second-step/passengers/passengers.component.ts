@@ -42,7 +42,7 @@ export class PassengersComponent implements OnInit {
   addPassenger(data = {}) {
     this.passengersForm = null;
     this.passengersForm = new FormGroup({
-      name:new FormControl(null, Validators.required),
+      full_name:new FormControl(null, Validators.required),
       gender: new FormControl(Gender.Male, Validators.required),
     });
 
@@ -63,7 +63,7 @@ export class PassengersComponent implements OnInit {
     let value = this.passengersList[index];
 
     this.editForm = new FormGroup({
-      name:new FormControl(null, Validators.required),
+      full_name:new FormControl(null, Validators.required),
       gender: new FormControl(Gender.Male, Validators.required),
     });
 

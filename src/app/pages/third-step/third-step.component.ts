@@ -4,11 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from '../second-step/time-select/time-select.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Airport, FlightType } from 'src/app/shared/enums/enums';
+import { ApiService } from 'src/app/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-third-step',
   templateUrl: './third-step.component.html',
-  styleUrls: ['./third-step.component.scss']
+  styleUrls: ['./third-step.component.scss'],
+  providers:[DatePipe]
 })
 export class ThirdStepComponent {
   parent;
@@ -19,6 +22,8 @@ export class ThirdStepComponent {
     private activedRoute:ActivatedRoute,
     private router:Router,
     private dialog:MatDialog,
+    public  apiService:ApiService,
+    private datePipe:DatePipe
   ) {
     setTimeout(() => {
       this.parent.step = this.activedRoute.snapshot.data.step
@@ -36,6 +41,37 @@ export class ThirdStepComponent {
   
   save() {
     console.log(this.form);
+    if(this.form.invalid) return;
+
+    let value = {...this.form.value.first, ...this.form.value.second, guest_notes:this.form.value.guest_notes};
+    value = JSON.parse(JSON.stringify(value));
+
+    console.log(value);
+
+    value.passengers = value.passengers.map(p => {
+      if(p.phone) {
+        p.phone_code = p.phone.dialCode;
+        p.phone = p.phone.number;
+      } else {
+        p.phone_code = value.passengers[0].phone_code;
+        p.phone = value.passengers[0].phone;
+      }
+
+      p.identity_number  = 54545454545;
+      return p;
+    });
+
+
+    value.transfer_date_time = this.datePipe.transform(value.date, 'yyyy-dd-M')
+    value.number_of_passengers = value.passengers.length;
+    value.price = this.apiService.selectedCar.price;
+
+    this.apiService
+    console.log(value);
+
+    this.apiService.saveOrder(value).subscribe( r => {
+      console.log(r);
+    })
     // if(this.form.valid) {
     //   this.router.navigate(['/2'])
     // }
@@ -62,4 +98,6 @@ export class ThirdStepComponent {
       if(result) this.formGroup.patchValue(result);
     });
   }
+
+
 }
