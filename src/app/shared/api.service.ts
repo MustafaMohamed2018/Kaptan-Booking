@@ -8,7 +8,10 @@ import { Observable, Subscription, combineLatest, finalize, skip, startWith } fr
 })
 export class ApiService {
   api = 'https://kaptanvip.com/dev/api/v1/c/request/'
-  domainName
+  domainName;
+
+  hasOpenedPassneger = false;
+
   constructor(
     private httpClient:HttpClient
   ) {

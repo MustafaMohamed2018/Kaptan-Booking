@@ -27,14 +27,16 @@ export class PassengersComponent implements OnInit {
       this.parent.step = this.activedRoute.snapshot.data.step
     })
 
-    this.addPassenger();
-    for(let key in CountryISO) {
-      this.CountryISOReversed[CountryISO[key]] = key
-    }
+
   }
 
   ngOnInit(): void {
     this.passengersList = this.form.controls.second.controls.passengers.value || [];
+    console.log('this.passengersList', this.passengersList)
+    this.addPassenger();
+    for(let key in CountryISO) {
+      this.CountryISOReversed[CountryISO[key]] = key
+    }
   }
 
   Gender = Gender;
