@@ -7,12 +7,22 @@ import { combineLatest, skip, startWith } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-api = 'https://kaptanvip.com/dev/api/v1/c/request/doubletreesirkeci/'
-
+  api = 'https://kaptanvip.com/dev/api/v1/c/request/'
+  domainName
   constructor(
     private httpClient:HttpClient
   ) {
-    console.log('constructor')
+
+    let urlSplit = window.location.href.split('/');
+    let requestIndex = urlSplit.indexOf('request');
+    if(requestIndex >= 0) {
+      this.domainName = urlSplit[urlSplit.indexOf('request') + 1] + '/'
+    } else this.domainName = 'doubletreesirkeci/'
+
+    this.api += this.domainName
+
+    console.log('constructor');
+    console.log(window.location.href)
   }
 
   assets;
@@ -29,7 +39,7 @@ api = 'https://kaptanvip.com/dev/api/v1/c/request/doubletreesirkeci/'
   
   
   saveOrder(params) {
-    return this.httpClient.post('https://kaptanvip.com/dev/api/v1/c/request/:client/booking', params)
+    return this.httpClient.post( this.api + 'booking', params)
   }
 
 

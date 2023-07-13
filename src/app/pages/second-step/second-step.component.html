@@ -19,7 +19,7 @@
 </div>
 
 <mat-list>
-    <mat-list-item matRipple (click)="openDialog()">
+    <mat-list-item class="d-none d-lg-flex" matRipple (click)="openDialog()">
         <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
         <div matListItemTitle class="d-flex justify-content-between"> 
             <span>
@@ -30,6 +30,29 @@
             </mat-icon>
         </div>
     </mat-list-item>
+
+
+    <!-- <ng-container *ngIf="formGroup"> -->
+        <div class="hidden-input-cont" [formGroup]="formGroup">
+            <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
+            <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
+        </div>
+
+        <mat-list-item class="d-lg-none" matRipple>
+            <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between"> 
+                <span>
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+                </span>
+                <mat-icon>
+                    chevron_right
+                </mat-icon>
+            </div>
+        </mat-list-item>
+    <!-- </ng-container> -->
+
+
     <mat-divider></mat-divider>
     <mat-list-item matRipple routerLink="/add-passenger">
         <mat-icon matListItemIcon svgIcon="users"></mat-icon>
@@ -64,7 +87,7 @@
                     <div class="details">
                         <span>
                             <mat-icon svgIcon="users"></mat-icon>
-                            Max 
+                            {{  'Max' | translate }} 
                             {{ car.max_seats }}
                         </span>
 
@@ -72,7 +95,7 @@
 
                         <span>
                             <mat-icon >business_center</mat-icon>
-                            Max
+                            {{  'Max' | translate }} 
                             {{ car.max_bags }}
                         </span>
 

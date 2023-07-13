@@ -1,0 +1,41 @@
+<section class="row">
+    <div class="col-lg-6 col-xl-7 main-content">
+        <div class="page-content">
+            <div>
+                <div>
+                    <h2 class="mb-5">
+                        {{ 'SuccessTitle' | translate }}
+                    </h2>
+                   
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                    
+                    <p class="mt-4 mb-5">
+                        {{ 'OrderSuccess' | translate }}
+                    </p>
+
+                    <button mat-raised-button color="primary" class="d-block mb-3" (click)="route()">
+                        {{ 'BackToHome' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-xl-5 p-0 d-lg-block d-none">
+        <div class="img-bg">
+            <div>
+                <img src="assets/imgs/logo.png" alt="app logo">
+                <h1>
+                    {{ 'Title1' | translate }}
+                </h1>
+                <p>
+                    {{ 'Title2' | translate }}
+                </p>
+               
+            </div>
+        </div>
+        <!-- <img src="assets/imgs/background.jpg"> -->
+    </div>
+</section>

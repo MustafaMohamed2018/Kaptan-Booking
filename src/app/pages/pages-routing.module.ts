@@ -5,6 +5,7 @@ import { FirstStepComponent } from './first-step/first-step.component';
 import { SecondStepComponent } from './second-step/second-step.component';
 import { PassengersComponent } from './second-step/passengers/passengers.component';
 import { ThirdStepComponent } from './third-step/third-step.component';
+import { OrderSucessComponent } from './order-sucess/order-sucess.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
         pathMatch:'full'
       },
     ]
+  },
+  {
+    path:'order-sucess',
+    component:OrderSucessComponent
   }
 ];
 

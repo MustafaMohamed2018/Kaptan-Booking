@@ -1,6 +1,6 @@
 <section>
     <mat-list>
-        <mat-list-item  >
+        <mat-list-item  class="d-none d-lg-flex">
             <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
             <div matListItemTitle class="d-flex justify-content-between"> 
                 <span>
@@ -11,6 +11,26 @@
                 </button>
             </div>
         </mat-list-item>
+
+
+        <mat-list-item class="d-lg-none" matRipple>
+            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between">
+                <span>
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' - ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+                </span>
+                <button mat-button color="primary">
+                    <div class="hidden-input-cont" [formGroup]="formGroup">
+                        <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
+                        <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
+                    </div>
+                    <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                    {{ 'Change' | translate }}
+                </button>
+            </div>
+        </mat-list-item>
+
+
         <mat-divider></mat-divider>
 
         <div class="passengers-airport mt-4">
@@ -58,7 +78,7 @@
                 <div class="details">
                     <span>
                         <mat-icon svgIcon="users"></mat-icon>
-                        Max 
+                        {{  'Max' | translate }} 
                         {{ apiService.selectedCar.max_seats }}
                     </span>
 
@@ -66,7 +86,7 @@
 
                     <span>
                         <mat-icon >business_center</mat-icon>
-                        Max
+                        {{  'Max' | translate }} 
                         {{ apiService.selectedCar.max_bags }}
                     </span>
 

@@ -2,14 +2,14 @@ import {Component, DebugElement, SimpleChanges} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {By} from "@angular/platform-browser";
-import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatClockTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerModule} from "../ngx-mat-timepicker.module";
 import {DateTime} from "ts-luxon";
 
 @Component({
     template: `
 		<input [ngxMatTimepicker]="picker">
-		<ngx-mat-timepicker #picker></ngx-mat-timepicker>
+		<ngx-mat-clock-timepicker>#picker></ngx-mat-clock-timepicker>
     `
 })
 class TestComponent {
@@ -21,7 +21,7 @@ describe("NgxMatTimepickerDirective", () => {
     let fixture: ComponentFixture<TestComponent>;
     let input: DebugElement;
     let directive: NgxMatTimepickerDirective;
-    let timepickerComponent: NgxMatTimepickerComponent;
+    let timepickerComponent: NgxMatClockTimepickerComponent;
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
@@ -32,18 +32,18 @@ describe("NgxMatTimepickerDirective", () => {
         }).createComponent(TestComponent);
         input = fixture.debugElement.query(By.directive(NgxMatTimepickerDirective));
         directive = input.injector.get<NgxMatTimepickerDirective>(NgxMatTimepickerDirective);
-        timepickerComponent = TestBed.createComponent(NgxMatTimepickerComponent).componentInstance;
+        timepickerComponent = TestBed.createComponent(NgxMatClockTimepickerComponent).componentInstance;
     });
 
-    it("should register NgxMatTimepickerComponent", () => {
+    it("should register NgxMatClockTimepickerComponent", () => {
         const spy = spyOnProperty(directive, "timepicker", "set").and.callThrough();
         directive.timepicker = timepickerComponent;
         expect(spy).toHaveBeenCalledWith(timepickerComponent);
     });
 
-    it("should throw Error if NgxMatTimepickerComponent is not defined", () => {
+    it("should throw Error if NgxMatClockTimepickerComponent is not defined", () => {
         spyOnProperty(directive, "timepicker", "set").and.callThrough();
-        expect((): any => directive.timepicker = null).toThrowError("NgxMatTimepickerComponent is not defined." +
+        expect((): any => directive.timepicker = null).toThrowError("NgxMatClockTimepickerComponent is not defined." +
             " Please make sure you passed the timepicker to ngxMatTimepicker directive");
     });
 

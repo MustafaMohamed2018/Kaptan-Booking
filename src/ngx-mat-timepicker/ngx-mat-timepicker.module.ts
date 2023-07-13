@@ -30,7 +30,7 @@ import {
 import {
     NgxMatTimepickerStandaloneComponent
 } from "./components/ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
-import {NgxMatTimepickerComponent} from "./components/ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatClockTimepickerComponent} from "./components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {
     NgxMatTimepickerToggleComponent
 } from "./components/ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
@@ -83,7 +83,7 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         PortalModule
     ],
     exports: [
-        NgxMatTimepickerComponent,
+        NgxMatClockTimepickerComponent,
         NgxMatTimepickerToggleComponent,
         NgxMatTimepickerFieldComponent,
         NgxMatTimepickerDirective,
@@ -96,7 +96,7 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         //
         NgxMatTimepickerActiveHourPipe,
         NgxMatTimepickerActiveMinutePipe,
-        NgxMatTimepickerComponent,
+        NgxMatClockTimepickerComponent,
         NgxMatTimepickerDialComponent,
         NgxMatTimepickerDialControlComponent,
         NgxMatTimepickerDialogComponent,
@@ -125,11 +125,11 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         }
     ]
 })
-export class NgxMatTimepickerModule {
+export class NgxMatClockTimepickerModule {
 
-    static setLocale(locale: string): ModuleWithProviders<NgxMatTimepickerModule> {
+    static setLocale(locale: string): ModuleWithProviders<NgxMatClockTimepickerModule> {
         return {
-            ngModule: NgxMatTimepickerModule,
+            ngModule: NgxMatClockTimepickerModule,
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: locale},
                 {provide: NGX_MAT_TIMEPICKER_CONFIG, useValue: undefined},

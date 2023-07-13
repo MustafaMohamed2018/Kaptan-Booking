@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Airport, FlightType } from 'src/app/shared/enums/enums';
 import { ApiService } from 'src/app/api.service';
 import { DatePipe } from '@angular/common';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-third-step',
@@ -23,14 +24,14 @@ export class ThirdStepComponent {
     private router:Router,
     private dialog:MatDialog,
     public  apiService:ApiService,
-    private datePipe:DatePipe
+    private datePipe:DatePipe,
   ) {
     setTimeout(() => {
       this.parent.step = this.activedRoute.snapshot.data.step
     })
   }
 
-  formGroup:FormGroup;
+  formGroup:FormGroup | any;
   firstForm;
   ngOnInit(): void {
     this.formGroup = this.form.controls.second;
@@ -38,6 +39,14 @@ export class ThirdStepComponent {
 
     console.log(this.formGroup)
   }
+
+  public color: ThemePalette = 'primary';
+  minDate = new Date();
+  closedDate() {
+    this.formGroup.controls.time.setValue(new Date(this.formGroup.controls.date.value).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }))
+  }
+
+
   
   save() {
     console.log(this.form);
@@ -62,7 +71,7 @@ export class ThirdStepComponent {
     });
 
 
-    value.transfer_date_time = this.datePipe.transform(value.date, 'yyyy-dd-M')
+    value.transfer_date_time = this.datePipe.transform(value.date, 'yyyy-M-dd') + ' ' + value.time+':00';
     value.number_of_passengers = value.passengers.length;
     value.price = this.apiService.selectedCar.price;
 
@@ -71,6 +80,7 @@ export class ThirdStepComponent {
 
     this.apiService.saveOrder(value).subscribe( r => {
       console.log(r);
+      this.router.navigate(['/order-sucess'], {replaceUrl: true})
     })
     // if(this.form.valid) {
     //   this.router.navigate(['/2'])

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControlDirective, FormGroup, FormGroupDirective } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
-import { Airport } from 'src/app/shared/enums/enums';
 import { ApiService } from 'src/app/api.service';
-import { combineLatest, forkJoin, startWith, zip } from 'rxjs';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-second-step',
   templateUrl: './second-step.component.html',
-  styleUrls: ['./second-step.component.scss']
+  styleUrls: ['./second-step.component.scss'],
+  providers: [FormControlDirective, FormGroupDirective]
 })
 export class SecondStepComponent {
   parent
@@ -31,12 +31,13 @@ export class SecondStepComponent {
   form:any;
 
 
-  formGroup:FormGroup;
+  formGroup:FormGroup | any;
   firstForm;
   ngOnInit(): void {
     this.Airport = this.apiService.assets['airportsEnum'];
 
     this.formGroup = this.form.controls.second;
+
     this.firstForm = this.form.controls.first;
 
     // combineLatest([
@@ -85,6 +86,10 @@ export class SecondStepComponent {
 
   }
   
+  openToggle(toggle) {
+    console.log(toggle)
+  }
+
   selectCar(car) {
     this.formGroup.controls.car_model_id.setValue(car.id);
     this.apiService.selectedCar = car;
@@ -97,6 +102,13 @@ export class SecondStepComponent {
     }
   }
 
+
+  public color: ThemePalette = 'primary';
+  minDate = new Date();
+
+  closedDate() {
+    this.formGroup.controls.time.setValue(new Date(this.formGroup.controls.date.value).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }))
+  }
 
 
   openDialog() {

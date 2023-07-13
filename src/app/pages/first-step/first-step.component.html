@@ -12,7 +12,7 @@
                         </span>
                     </div>
                     <span class="text">
-                        From Airport
+                        {{ 'FromAirport' | translate }}
                     </span>
                 </div>
             </mat-button-toggle>
@@ -30,7 +30,7 @@
                         </span>
                     </div>
                     <span class="text">
-                        To Airport
+                        {{ 'ToAirport' | translate }}
                     </span>
                 </div>
             </mat-button-toggle>
@@ -39,7 +39,7 @@
    
     <div class="form-group mb-3">
         <label class="d-flex">
-            Select airport
+            {{ 'SelectAirport' | translate }}
         </label>
         <mat-button-toggle-group formControlName="airport_id" class="row-btns" >
             <mat-button-toggle class="mb-3" *ngFor="let airport of apiService.assets.airports" [value]="airport.id">
@@ -74,7 +74,7 @@
             <mat-icon class="me-2">
                 flight
             </mat-icon>
-            Trip Number
+            {{ 'TripNumber' | translate }}
         </label>
         <input formControlName="trip_number" type="text" id="flight">
     </div>
@@ -85,7 +85,7 @@
                 <mat-icon class="me-2">
                     pin
                 </mat-icon>
-                Room Number
+                {{ 'RoomNumber' | translate }}
             </label>
             <input formControlName="room_number" type="text" id="room_number">
         </div>
@@ -97,12 +97,12 @@
             <mat-icon class="me-2">
                 location_on
             </mat-icon>
-            Delivery Location
+            {{ 'DeliveryLocation' | translate }}
         </label>
         <input formControlName="delivery_location" type="text" id="Location">
     </div>
 
     <button mat-raised-button color="primary">
-        Explore Cars & Prices
+        {{ 'f1B' | translate }}
     </button>
 </form>

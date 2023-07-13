@@ -1,0 +1,191 @@
+// @import "@angular/material/theming";
+// $app-primary: mat-palette($mat-indigo);
+
+// @use 'sass:map';
+// @use '@angular/material' as mat;
+
+
+
+// @mixin color($theme){
+//   // Get the color config from the theme.
+//   $color-config: mat.get-color-config($theme);
+//   // Get the primary color palette from the color-config.
+//   $primary-palette: map.get($color-config, 'primary');
+  
+//   .mat-row:hover {
+//     background-color: mat.get-color-from-palette($primary-palette, 100);
+//   }
+// }
+
+section {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    // img {
+    //     width: 100%;
+    //     object-fit: cover;
+    //     height: 100vh;
+    //     display: block;
+    // }
+    .img-bg {
+        width: 100%;
+        // object-fit: cover;
+        height: 100vh;
+        // display: block;
+        // background-image: url('../../../assets/imgs/background.jpg');
+        background-image: url('../../../assets/imgs/bg-1.jpg');
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        div {
+            padding: 64px 50px 64px 50px;
+            color: #fff;
+            img {
+                width: 167px;
+            }
+            h1 {
+                font-size: 28px;
+                margin-top: 40px;
+                font-weight: normal;
+            }
+            p {
+                margin-top: 32px;
+            }
+        }
+    }
+
+    .main-content {
+        padding: 48px 100px 0 100px;
+        // max-height: 100vh;
+        // overflow: auto;
+
+        .page-content {
+            // text-align: initial;
+            // display: inline-block;
+
+
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 48px;
+            text-align: center;
+
+            .router-cont {
+                max-height: calc(100vh - 152px);
+                min-height: calc(100vh - 152px);
+                overflow: auto;
+                padding-right: 16px;
+            }
+        }
+
+        p,h2{
+            color: var(--text-color);
+        }
+
+        h2 {
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        .steps {
+            display: flex;
+            margin-bottom: 16px;
+            span {
+                width: 34px;
+                height: 3px;
+                background-color: #D2D2D2;
+                border-radius: 2px;
+                &:nth-of-type(2) {
+                    margin: 0 8px;
+                }
+                &.active {
+                   background-color: #00299B;
+
+                    // background-color:  mat-color($app-primary, 800);
+                }
+            }
+        }
+
+    }
+}
+
+button.d-block {
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    font-weight: normal;
+    font-size: 16px;
+    height: 56px;
+}
+
+
+@media (max-width: 991px) {
+    section {
+        text-align: center;
+        // .steps {
+        //     justify-content: center;
+        // }
+        .main-content {
+            padding: 48px 16px 0 16px;
+        }
+        .page-content{
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #1234a7;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+  
+.checkmark {
+width: 56px;
+height: 56px;
+border-radius: 50%;
+display: block;
+stroke-width: 2;
+stroke: #fff;
+stroke-miterlimit: 10;
+margin: 20px auto;
+box-shadow: inset 0px 0px 0px #1234a7;
+animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+transform-origin: 50% 50%;
+stroke-dasharray: 48;
+stroke-dashoffset: 48;
+animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+100% {
+    stroke-dashoffset: 0;
+}
+}
+@keyframes scale {
+0%, 100% {
+    transform: none;
+}
+50% {
+    transform: scale3d(1.1, 1.1, 1);
+}
+}
+@keyframes fill {
+100% {
+    box-shadow: inset 0px 0px 0px 30px #1234a7;
+}
+}

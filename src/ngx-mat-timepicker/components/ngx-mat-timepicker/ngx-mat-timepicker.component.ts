@@ -20,7 +20,7 @@ import { NgxMatTimepickerLocaleService } from "src/ngx-mat-timepicker/services/n
 let config: NgxMatTimepickerConfig;
 
 @Component({
-    selector: "ngx-mat-timepicker",
+    selector: "ngx-mat-clock-timepicker",
     template: `
 		<!-- <ng-template
 				cdkConnectedOverlay
@@ -45,7 +45,7 @@ let config: NgxMatTimepickerConfig;
         }
     ]
 })
-export class NgxMatTimepickerComponent implements NgxMatTimepickerRef, OnInit {
+export class NgxMatClockTimepickerComponent implements NgxMatTimepickerRef, OnInit {
 
     static nextId: number = 0;
 
@@ -126,7 +126,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef, OnInit {
     @Input() editableHintTmpl: TemplateRef<Node>;
     @Output() hourSelected = new EventEmitter<number>();
     @Input() hoursOnly = false;
-    @HostBinding("id") id: string = `ngx_mat_timepicker_${++NgxMatTimepickerComponent.nextId}`;
+    @HostBinding("id") id: string = `ngx_mat_timepicker_${++NgxMatClockTimepickerComponent.nextId}`;
     @Input() isEsc = !0;
     @Input() max: DateTime;
     @Input() min: DateTime;
