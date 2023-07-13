@@ -49,7 +49,8 @@
   "Error500":"Internal Server Error",
   "Error404":"Not Found",
   "ErrorUnknown":"Unknown Error",
-  "Error0":"Unable to communicate with server"
+  "Error0":"Unable to communicate with server",
+  "GettingCarsData":"Getting Cars Data"
 
 
 
