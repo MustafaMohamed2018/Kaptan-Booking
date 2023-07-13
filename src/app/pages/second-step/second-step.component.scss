@@ -1,7 +1,8 @@
 .airport-info {
     border: 1px solid #E9E9E9;
     border-radius: 8px;
-    padding: 10px 32px;
+    // padding: 10px 32px;
+    padding: 10px 16px;
     div {
         text-align: center;
         width: 150px;
@@ -19,6 +20,7 @@
         font-size: 36px;
         width: 36px;
         height: 36px;
+        padding: 10px 32px;
     }
 }
 

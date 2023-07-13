@@ -46,9 +46,25 @@
 }
 
 @media (max-width: 991px) {
-    mat-dialog-actions {
-        button.mdc-button {
-            width: 120px;
+    :host {
+        form {
+            .mat-mdc-dialog-title {
+                padding: 1rem 1rem .5rem;
+                
+            }
+            h2 {
+                margin: 0 !important;
+            }
+            mat-dialog-content{
+                padding: 0 1rem 2rem;
+            }
+            mat-dialog-actions {
+                padding-bottom: 1rem;
+                button.mdc-button {
+                    width: 120px;
+                }
+            }
         }
+    
     }
 }
