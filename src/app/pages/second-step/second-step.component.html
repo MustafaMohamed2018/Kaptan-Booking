@@ -19,7 +19,7 @@
 </div>
 
 <mat-list>
-    <mat-list-item class="d-none d-lg-flex" matRipple (click)="openDialog()">
+    <mat-list-item matRipple class="d-flex" (click)="openDialog()">
         <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
         <div matListItemTitle class="d-flex justify-content-between"> 
             <span>
@@ -32,25 +32,23 @@
     </mat-list-item>
 
 
-    <!-- <ng-container *ngIf="formGroup"> -->
-        <div class="hidden-input-cont" [formGroup]="formGroup">
-            <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
-            <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
-        </div>
+    <!-- <div class="hidden-input-cont" [formGroup]="formGroup">
+        <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
+        <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
+    </div>
 
-        <mat-list-item class="d-lg-none" matRipple>
-            <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
-            <div matListItemTitle class="d-flex justify-content-between"> 
-                <span>
-                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
-                </span>
-                <mat-icon>
-                    chevron_right
-                </mat-icon>
-            </div>
-        </mat-list-item>
-    <!-- </ng-container> -->
+    <mat-list-item class="d-lg-none" matRipple>
+        <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+        <div matListItemTitle class="d-flex justify-content-between"> 
+            <span>
+                {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+            </span>
+            <mat-icon>
+                chevron_right
+            </mat-icon>
+        </div>
+    </mat-list-item> -->
 
 
     <mat-divider></mat-divider>
@@ -84,8 +82,12 @@
                 <img mat-card-sm-image [src]="car.image" loading="lazy">
 
                 <div>
-                    <h3>
+                    <h3 class="d-flex align-items-center justify-content-between">
                         {{ car.name }}
+                        <!-- <span>
+                            <mat-icon>airport_shuttle</mat-icon>
+                            {{car.type}}
+                        </span> -->
                     </h3>
                     <p>
                         {{ car.description }}
@@ -105,12 +107,9 @@
                             {{ car.max_bags }}
                         </span>
 
-                        <span class="dot"></span>
+                        <!-- <span class="dot"></span> -->
 
-                        <span>
-                            <mat-icon>airport_shuttle</mat-icon>
-                            {{car.type}}
-                        </span>
+                        
                         
                     </div>
 
