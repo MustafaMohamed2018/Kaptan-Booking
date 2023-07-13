@@ -7,7 +7,8 @@ import { Observable, Subscription, combineLatest, finalize, skip, startWith } fr
   providedIn: 'root'
 })
 export class ApiService {
-  api = 'https://kaptanvip.com/dev/api/v1/c/request/'
+  baseUrl = 'https://kaptanvip.com/dev/api/v1/c/request/'
+  api;
   domainName;
 
   hasOpenedPassneger = false;
@@ -16,11 +17,11 @@ export class ApiService {
     private httpClient:HttpClient
   ) {
 
-    let urlSplit = window.location.href.split('/');
-    let requestIndex = urlSplit.indexOf('request');
-    if(requestIndex >= 0) {
-      this.domainName = urlSplit[urlSplit.indexOf('request') + 1] + '/'
-    } else this.domainName = 'doubletreesirkeci/'
+    // let urlSplit = window.location.href.split('/');
+    // let requestIndex = urlSplit.indexOf('request');
+    // if(requestIndex >= 0) {
+    //   this.domainName = urlSplit[urlSplit.indexOf('request') + 1] + '/'
+    // } else this.domainName = 'doubletreesirkeci/'
 
     this.api += this.domainName
 
@@ -30,7 +31,7 @@ export class ApiService {
 
   assets;
   getAssets() {
-   return this.httpClient.get(this.api + 'transfer');
+   return this.httpClient.get(this.baseUrl, {params:{slug:this.domainName}});
   }
 
   cars;

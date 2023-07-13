@@ -50,6 +50,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           else if (error.status == 404)
             this.openSnackBar('Error404', null, 'error');
           else if (error.status == 500) this.openSnackBar('Error500', null, 'error');
+          else if(error.status == 422) this.openSnackBar(error.error.message, null, 'error');
           else this.openSnackBar('ErrorUnknown', null, 'error');
         }
         return throwError(error);
