@@ -1,4 +1,4 @@
-<form [formGroup]="passengerForm"  #f="ngForm" (submit)="submit(f)" *ngIf="passengerForm">
+<form [formGroup]="passengerForm"  #f="ngForm" (submit)="submit(f)" *ngIf="passengerForm; else showNull">
     <header class="mb-3" *ngIf="passengersList.length != 0">
         <h2 mat-dialog-title>
             {{ ( inEdit ?  'Edit' : 'Add' ) | translate }}
@@ -38,10 +38,15 @@
             <input type="email" [placeholder]="'Email' | translate" formControlName="email">
         </div>
 
-        <div class="col-md-12 d-flex justify-content-center" *ngIf="!inEdit; else editBtns">
+        <div class="col-md-12 d-flex justify-content-between flex-wrap" *ngIf="!inEdit; else editBtns">
             <button mat-button class="submit-btn">
                 <mat-icon>add</mat-icon>
                 {{ 'AddMore' | translate }}
+            </button>
+
+
+            <button type="button" mat-raised-button class="submit-btn" color="primary" [disabled]="!passengersList.length" routerLink="/2">
+                {{ 'Next' | translate }}
             </button>
         </div>
 
@@ -60,3 +65,7 @@
         </ng-template>
     </div>
 </form>
+
+<ng-template #showNull>
+    <div></div>
+</ng-template>

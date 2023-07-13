@@ -86,6 +86,7 @@ export class ThirdStepComponent {
       this.apiService.listenRequ.unsubscribe();
       this.form.reset();
       this.apiService.selectedCar = [];
+      this.apiService.hasOpenedPassneger = false;
       this.router.navigate(['/order-sucess'], {replaceUrl: true});
     })
 

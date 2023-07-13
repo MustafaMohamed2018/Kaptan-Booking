@@ -24,18 +24,22 @@
             font-size: 36px;
             width: 36px;
             height: 36px;
+            margin-left: 8px;
+            margin-right: 8px;
         }
      
     }
+
 
     .passengers {
         width: 100%;
         justify-content: flex-start;
         display: flex;
-        padding-top: 10px;
+        // padding-top: 10px;
         margin-top: 12px;
         border-top: 1px solid #E9E9E9;
         font-size: 14px;
+        padding-top: 16;
         mat-icon {
             width: 24px;
             height: 24px;
@@ -129,17 +133,17 @@ mat-list {
 
 
 @media (max-width: 991px) {
-    .airport-info {
-        flex-direction: column;
-        align-items: center;
-        mat-icon[svgIcon="arrows"] {
-            transform: rotate(90deg);
-            height: 30px;
-            width: 30px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-    }
+    // .airport-info {
+    //     flex-direction: column;
+    //     align-items: center;
+    //     mat-icon[svgIcon="arrows"] {
+    //         transform: rotate(90deg);
+    //         height: 30px;
+    //         width: 30px;
+    //         margin-top: 10px;
+    //         margin-bottom: 10px;
+    //     }
+    // }
 }
 
 
@@ -161,25 +165,25 @@ mat-card {
             border-radius: 8px;
             width: 105px;
             height: 105px;
+            object-fit: cover;
         }
         div {
             flex: 1;
             padding-left: 12px;
             h3 {
-                margin: 0 0 8px 0;
                 font-size: 16px;
                 font-weight: normal;
+                margin: 0 0 12px 0;
             }
             p {
                 color: #CCCCCC;
                 font-size: 14px;
-                margin: 0 0 8px 0;
+                margin: 0 0 12px 0;
             }
             div {
                 margin: 0 0 8px 0;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
                 padding: 0;
                 span {
                     font-size: 12px;
@@ -191,6 +195,8 @@ mat-card {
                     height: 4px;
                     background: #E9E9E9;
                     border-radius: 50px;
+                    margin-left: 6px;
+                    margin-right: 6px;
                 }
                 mat-icon {
                     width: 16px;

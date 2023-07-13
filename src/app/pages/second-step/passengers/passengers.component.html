@@ -40,12 +40,12 @@
         <h2 mat-dialog-title>
             {{ 'AddPassengers' | translate }}
         </h2>
-        <button mat-button routerLink="/2" type="button">
+        <!-- <button mat-button routerLink="/2" type="button">
             <mat-icon>
                 keyboard_backspace
             </mat-icon>
             {{ 'BackToBooking' | translate }}
-        </button>
+        </button> -->
     </header>
 
 
@@ -88,7 +88,6 @@
             <ng-template #showEditForm>
                 <app-passenger-form [inEdit]="true" [passengerForm]="editForm" [passengersList]="passengersList" (btnClicked)="updatePassenger($event)"></app-passenger-form>
             </ng-template>
-
 
             <mat-divider></mat-divider>
         </ng-container>

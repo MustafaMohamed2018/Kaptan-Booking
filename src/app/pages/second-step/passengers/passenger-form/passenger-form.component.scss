@@ -27,13 +27,27 @@ form {
     }
 
     .submit-btn {
+        // border: 1px solid #E9E9E9;
+        // border-radius: 8px;
+        // padding: 1rem 2rem;
+        // height: auto;
+        // font-size: 16px;
+        // font-weight: normal;
+        // margin-top: 8px;
+
         border: 1px solid #E9E9E9;
         border-radius: 8px;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         height: auto;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: normal;
         margin-top: 8px;
+        min-width: 120px;
+
+        &.mat-mdc-raised-button {
+            border: none;
+        }
+
         mat-icon {
             width: 23px;
             height: 23px;
@@ -106,5 +120,12 @@ ngx-intl-tel-input {
 @media (max-width: 769px) {
     mat-radio-group {
         justify-content: flex-start !important;
+    }
+    form {
+        
+        .submit-btn {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
     }
 }

@@ -84,6 +84,7 @@ export class SecondStepComponent {
     //   })
     // });
 
+    if(!this.formGroup.controls['date'].value)  this.openDialog();
   }
   
   selectCar(car) {
@@ -107,6 +108,7 @@ export class SecondStepComponent {
   }
 
 
+  hasOpenedPassneger = false;
   openDialog() {
     let date = new Date();
     if(this.formGroup.controls['date'].value) date = new Date(this.formGroup.controls['date'].value);
@@ -126,6 +128,10 @@ export class SecondStepComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: `, result);
       if(result) this.formGroup.patchValue(result);
+
+      if(!this.apiService.hasOpenedPassneger) this.router.navigate(['/add-passenger']);
+      this.apiService.hasOpenedPassneger = true;
+
     });
   }
 

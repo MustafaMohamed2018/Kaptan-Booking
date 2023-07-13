@@ -1,6 +1,6 @@
 <section>
     <mat-list>
-        <mat-list-item  class="d-none d-lg-flex">
+        <mat-list-item class="d-flex">
             <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
             <div matListItemTitle class="d-flex justify-content-between"> 
                 <span>
@@ -13,7 +13,7 @@
         </mat-list-item>
 
 
-        <mat-list-item class="d-lg-none" matRipple>
+        <!-- <mat-list-item class="d-lg-none" matRipple>
             <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
             <div matListItemTitle class="d-flex justify-content-between">
                 <span>
@@ -28,7 +28,7 @@
                     {{ 'Change' | translate }}
                 </button>
             </div>
-        </mat-list-item>
+        </mat-list-item> -->
 
 
         <mat-divider></mat-divider>
@@ -91,13 +91,13 @@
                         {{ apiService.selectedCar.max_bags }}
                     </span>
 
-                    <span class="dot"></span>
+                    <!-- <span class="dot"></span>
 
                     <span>
                         <mat-icon>airport_shuttle</mat-icon>
                         {{apiService.selectedCar.type}}
                     </span>
-                    
+                     -->
                 </div>
 
                 <p class="price p-0 m-0" >
