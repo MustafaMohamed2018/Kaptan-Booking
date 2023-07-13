@@ -5,6 +5,7 @@ import { FirstStepComponent } from './first-step/first-step.component';
 import { SecondStepComponent } from './second-step/second-step.component';
 import { PassengersComponent } from './second-step/passengers/passengers.component';
 import { ThirdStepComponent } from './third-step/third-step.component';
+import { OrderSucessComponent } from './order-sucess/order-sucess.component';
 
 const routes: Routes = [
   {
@@ -15,28 +16,32 @@ const routes: Routes = [
         path:'1',
         component:FirstStepComponent,
         data:{
-          step:1
+          step:1,
+          // reuseComponent:true
         }
       },
       {
         path:'2',
         component:SecondStepComponent,
         data:{
-          step:2
+          step:2,
+          // reuseComponent:true
         }
       },
       {
         path:'add-passenger',
         component:PassengersComponent,
         data:{
-          step:2
+          step:2,
+          // reuseComponent:true
         }
       },
       {
         path:'3',
         component: ThirdStepComponent,
         data:{
-          step:3
+          step:3,
+          // reuseComponent:true
         }
       },
       {
@@ -45,6 +50,10 @@ const routes: Routes = [
         pathMatch:'full'
       },
     ]
+  },
+  {
+    path:'order-sucess',
+    component:OrderSucessComponent
   }
 ];
 

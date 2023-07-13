@@ -45,6 +45,20 @@
     }
 }
 
+
+.hidden-input-cont {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    input {
+        width: 0;
+        min-width: 0;
+        min-height: 0;
+        max-width: 0;
+        padding: 0;
+    }
+}
+
 mat-list {
     mat-list-item {
         cursor: pointer;
@@ -83,6 +97,17 @@ mat-list {
                 // bottom: -10px;
                 font-size: 16px;
                 font-weight: normal;
+                position: relative;
+                mat-datepicker-toggle{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                }
             }
             &.passengers {
                 overflow: visible;
@@ -208,4 +233,10 @@ form {
             height: 56px;
         }
     }
+}
+
+
+mat-spinner.mat-mdc-progress-spinner  {
+    width: 30px;
+    height: 30px;
 }

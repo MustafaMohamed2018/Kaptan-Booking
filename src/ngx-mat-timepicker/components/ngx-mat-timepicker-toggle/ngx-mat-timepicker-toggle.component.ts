@@ -1,7 +1,7 @@
 import {Component, ContentChild, Input, ViewEncapsulation} from "@angular/core";
 //
 import {NgxMatTimepickerToggleIconDirective} from "../../directives/ngx-mat-timepicker-toggle-icon.directive";
-import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatClockTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
 
 @Component({
     selector: "ngx-mat-timepicker-toggle",
@@ -24,7 +24,7 @@ export class NgxMatTimepickerToggleComponent {
     @ContentChild(NgxMatTimepickerToggleIconDirective, {static: true}) customIcon: NgxMatTimepickerToggleIconDirective;
 
     // tslint:disable-next-line:no-input-rename
-    @Input("for") timepicker: NgxMatTimepickerComponent;
+    @Input("for") timepicker: NgxMatClockTimepickerComponent;
 
     private _disabled: boolean;
 

@@ -1,6 +1,6 @@
 <section>
     <mat-list>
-        <mat-list-item  >
+        <mat-list-item  class="d-none d-lg-flex">
             <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
             <div matListItemTitle class="d-flex justify-content-between"> 
                 <span>
@@ -11,6 +11,26 @@
                 </button>
             </div>
         </mat-list-item>
+
+
+        <mat-list-item class="d-lg-none" matRipple>
+            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between">
+                <span>
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' - ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+                </span>
+                <button mat-button color="primary">
+                    <div class="hidden-input-cont" [formGroup]="formGroup">
+                        <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
+                        <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
+                    </div>
+                    <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                    {{ 'Change' | translate }}
+                </button>
+            </div>
+        </mat-list-item>
+
+
         <mat-divider></mat-divider>
 
         <div class="passengers-airport mt-4">
@@ -20,7 +40,7 @@
                         {{ 'From' | translate }}
                     </span>
                     <p>
-                        {{ Airport[firstForm.value.airport] | translate  }}
+                        {{ Airport[firstForm.value.airport_id] | translate  }}
                     </p>
                 </div>
                 <mat-icon svgIcon="arrows"></mat-icon>
@@ -29,7 +49,7 @@
                         {{ 'To' | translate }}
                     </span>
                     <p>
-                        {{ firstForm.value.deliveryLocation  }}
+                        {{ firstForm.value.delivery_location  }}
                     </p>
                 </div>
     
@@ -38,48 +58,51 @@
             
             <div class="passengers">
                 <mat-icon svgIcon="users"></mat-icon>
-                5 Passenger
+                {{ formGroup.controls.passengers.value?.length || 0 }}
+                {{ 'Passenger' | translate }}
             </div>
         </div>
 
     </mat-list>
 
-    <mat-card>
+    <mat-card *ngIf="apiService.selectedCar">
         <mat-card-content>
-            <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            <img mat-card-sm-image [src]="apiService.selectedCar.image" >
 
             <div>
                 <h3>
-                    Economy VAN
+                    {{ apiService.selectedCar.name }}
                 </h3>
                 <p>
-                    Mercedes Vito etc
+                    {{ apiService.selectedCar.description }}
                 </p>
                 <div class="details">
                     <span>
                         <mat-icon svgIcon="users"></mat-icon>
-                        Max 5
+                        {{  'Max' | translate }} 
+                        {{ apiService.selectedCar.max_seats }}
                     </span>
 
                     <span class="dot"></span>
 
                     <span>
                         <mat-icon >business_center</mat-icon>
-                        Max 5
+                        {{  'Max' | translate }} 
+                        {{ apiService.selectedCar.max_bags }}
                     </span>
 
                     <span class="dot"></span>
 
                     <span>
                         <mat-icon>airport_shuttle</mat-icon>
-                        Private Car
+                        {{apiService.selectedCar.type}}
                     </span>
                     
                 </div>
 
                 <p class="price p-0 m-0" >
                     <span>
-                        125
+                        {{ apiService.selectedCar.price }}
                     </span>
                     tl
                 </p>
@@ -89,16 +112,20 @@
     </mat-card>
 
     <form [formGroup]="form">
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="notes">
                 {{ 'NotesLabel' | translate }}
             </label>
-            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="notes" [placeholder]="'AddNote' | translate"></textarea>
+            <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="guest_notes" [placeholder]="'AddNote' | translate"></textarea>
         </div>
 
-        <button mat-raised-button color="primary" class="d-block mb-3">
-            {{ 'BookConfirmation' | translate }}
+        <button mat-raised-button color="primary" class="d-block mb-3"  color="primary" (click)="save()" [disabled]="isSaving">
+            <div class="d-flex align-items-center justify-content-center">
+                <mat-spinner class="me-3" diameter="30" strokeWidth="2" *ngIf="isSaving"></mat-spinner>
+                {{ 'BookConfirmation' | translate }}
+            </div>
         </button>
+
         <button mat-button type="button" class="d-block" routerLink="/2">
             <mat-icon>
                 keyboard_backspace

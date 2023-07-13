@@ -12,7 +12,7 @@
                         </span>
                     </div>
                     <span class="text">
-                        From Airport
+                        {{ 'FromAirport' | translate }}
                     </span>
                 </div>
             </mat-button-toggle>
@@ -30,7 +30,7 @@
                         </span>
                     </div>
                     <span class="text">
-                        To Airport
+                        {{ 'ToAirport' | translate }}
                     </span>
                 </div>
             </mat-button-toggle>
@@ -39,10 +39,10 @@
    
     <div class="form-group mb-3">
         <label class="d-flex">
-            Select airport
+            {{ 'SelectAirport' | translate }}
         </label>
-        <mat-button-toggle-group formControlName="airport" class="row-btns" >
-            <mat-button-toggle [value]="Airport.Istanbul" class="mb-3">
+        <mat-button-toggle-group formControlName="airport_id" class="row-btns" >
+            <mat-button-toggle class="mb-3" *ngFor="let airport of apiService.assets.airports" [value]="airport.id">
                 <div class="content">
                     <span class="check-cont">
                         <mat-icon>
@@ -50,11 +50,11 @@
                         </mat-icon>
                     </span>
                     <p>
-                        Istanbul Airport
+                        {{ airport.name }}
                     </p>
                 </div>
             </mat-button-toggle>
-            <mat-button-toggle [value]="Airport.Sabiha">
+            <!-- <mat-button-toggle [value]="Airport.Sabiha">
                 <div class="content">
                     <span class="check-cont">
                         <mat-icon>
@@ -65,55 +65,44 @@
                         Sabiha Airport
                     </p>
                 </div>
-            </mat-button-toggle>
+            </mat-button-toggle> -->
         </mat-button-toggle-group>
     </div>
 
-    <div class="mb-3 form-group" *ngIf="formGroup.controls['type'].value == FlightType.FromAirPort ">
+    <div class="mb-3 form-group" *ngIf="formGroup.controls['type'].value == FlightType.FromAirPort; else showRoom ">
         <label class="d-flex align-items-center input-label" for="flight">
-            <mat-icon>
+            <mat-icon class="me-2">
                 flight
             </mat-icon>
-            Trip Number
+            {{ 'TripNumber' | translate }}
         </label>
-        <input formControlName="tripNumber" type="text" id="flight">
+        <input formControlName="trip_number" type="text" id="flight">
     </div>
+
+    <ng-template #showRoom>
+        <div class="mb-3 form-group">
+            <label class="d-flex align-items-center input-label" for="room_number">
+                <mat-icon class="me-2">
+                    pin
+                </mat-icon>
+                {{ 'RoomNumber' | translate }}
+            </label>
+            <input formControlName="room_number" type="text" id="room_number">
+        </div>
+    </ng-template>
+    
 
     <div class="mb-3 form-group">
         <label class="d-flex align-items-center input-label" for="Location">
-            <mat-icon>
+            <mat-icon class="me-2">
                 location_on
             </mat-icon>
-            Delivery Location
+            {{ 'DeliveryLocation' | translate }}
         </label>
-        <input formControlName="deliveryLocation" type="text" id="Location">
+        <input formControlName="delivery_location" type="text" id="Location">
     </div>
 
     <button mat-raised-button color="primary">
-        Explore Cars & Prices
+        {{ 'f1B' | translate }}
     </button>
-    <!-- <mat-radio-group name="flavors" color="primary">
-        <mat-radio-button value="vanilla">
-            <div class="d-flex justify-content-between align-items-center">
-                <mat-icon svgIcon="plan-up"></mat-icon>
-                <mat-icon>
-                    check
-                </mat-icon>
-            </div>
-            <span>
-                From Airport
-            </span>
-        </mat-radio-button>
-        <mat-radio-button value="strawberry">
-            <div class="d-flex justify-content-between align-items-center">
-                <mat-icon svgIcon="plan-down"></mat-icon>
-                <mat-icon>
-                    check
-                </mat-icon>
-            </div>
-            <span>
-                To Airport
-            </span>
-        </mat-radio-button>
-    </mat-radio-group> -->
 </form>

@@ -14,7 +14,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {MatFormField} from "@angular/material/form-field";
 //
-import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatClockTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerFormatType} from "../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
@@ -88,7 +88,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     @Input("ngxMatTimepicker")
-    set timepicker(picker: NgxMatTimepickerComponent) {
+    set timepicker(picker: NgxMatClockTimepickerComponent) {
         this._registerTimepicker(picker);
     }
 
@@ -148,7 +148,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _min: string | DateTime;
     private _previousFormat: number;
     private _subsCtrl$: Subject<void> = new Subject<void>();
-    private _timepicker: NgxMatTimepickerComponent;
+    private _timepicker: NgxMatClockTimepickerComponent;
     private _value: string = "";
 
     constructor(private _elementRef: ElementRef,
@@ -209,7 +209,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _onChange: (value: any) => void = () => {
     }
 
-    private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
+    private _registerTimepicker(picker: NgxMatClockTimepickerComponent): void {
         if (picker) {
             this._timepicker = picker;
             this._timepicker.registerInput(this);
@@ -223,7 +223,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
                 });
         }
         else {
-            throw new Error("NgxMatTimepickerComponent is not defined." +
+            throw new Error("NgxMatClockTimepickerComponent is not defined." +
                 " Please make sure you passed the timepicker to ngxMatTimepicker directive");
         }
     }

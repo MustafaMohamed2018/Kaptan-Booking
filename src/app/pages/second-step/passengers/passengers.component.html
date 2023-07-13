@@ -48,12 +48,13 @@
         </button>
     </header>
 
+
     <mat-list >
         <ng-container *ngFor="let passenger of passengersList; index as i">
             <mat-list-item *ngIf="activeEditIndex !== i; else showEditForm ">
                 <div matListItemTitle class="d-flex justify-content-between">
                     <span>
-                        {{ passenger.name }}
+                        {{ passenger.full_name }}
                         <span class="light">
                             ({{ Gender[passenger.gender] }})
                         </span>

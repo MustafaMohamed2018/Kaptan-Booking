@@ -8,7 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from '../shared/shared.module';
 import { SecondStepComponent } from './second-step/second-step.component';
-import { NgxMatTimepickerModule } from 'src/ngx-mat-timepicker/ngx-mat-timepicker.module';
+import { NgxMatClockTimepickerModule } from 'src/ngx-mat-timepicker/ngx-mat-timepicker.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TimeSelectComponent } from './second-step/time-select/time-select.component';
@@ -22,6 +22,9 @@ import { PassengerFormComponent } from './second-step/passengers/passenger-form/
 // import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 import { MatCardModule } from '@angular/material/card';
 import { ThirdStepComponent } from './third-step/third-step.component';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { OrderSucessComponent } from './order-sucess/order-sucess.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ThirdStepComponent } from './third-step/third-step.component';
     TimeSelectComponent,
     PassengersComponent,
     PassengerFormComponent,
-    ThirdStepComponent
+    ThirdStepComponent,
+    OrderSucessComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +43,7 @@ import { ThirdStepComponent } from './third-step/third-step.component';
     MatRadioModule,
     MatButtonToggleModule,
     SharedModule,
-    NgxMatTimepickerModule,
-    NgxMatTimepickerModule,
+    NgxMatClockTimepickerModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -48,7 +51,13 @@ import { ThirdStepComponent } from './third-step/third-step.component';
     MatRippleModule,
     MatDividerModule,
     NgxIntlTelInputModule,
-    MatCardModule
+    MatCardModule,
+
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+
+    NgxMatNativeDateModule,
+    MatProgressSpinnerModule
     // NgxMatIntlTelInputComponent
   ]
 })

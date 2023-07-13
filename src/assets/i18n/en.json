@@ -34,7 +34,22 @@
   "AddDate":"Plese Add The Date",
   "NotesLabel":"Before confirming the reservation, do you want to add notes?",
   "AddNote":"Add note",
-  "BookConfirmation":"Book Confirmation"
+  "BookConfirmation":"Book Confirmation",
+  "BackToHome":"Back To Home",
+  "OrderSuccess":"Data was saved successfully, Your Transfer waiting admin confirmation.",
+  "SuccessTitle":"Order Has Been Sent successfully.",
+  "TripNumber":"Trip Number",
+  "RoomNumber":"Room Number",
+  "DeliveryLocation":"Delivery Location",
+  "f1B":"Explore Cars & Prices",
+  "FromAirport":"From Airport",
+  "ToAirport":"To Airport",
+  "SelectAirport":"Select airport",
+  "Max":"Max",
+  "Error500":"Internal Server Error",
+  "Error404":"Not Found",
+  "ErrorUnknown":"Unknown Error",
+  "Error0":"Unable to communicate with server"
 
 
 
