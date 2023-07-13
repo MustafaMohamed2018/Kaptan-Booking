@@ -3,7 +3,7 @@ import { FormControlDirective, FormGroup, FormGroupDirective } from '@angular/fo
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from 'src/app/shared/api.service';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({

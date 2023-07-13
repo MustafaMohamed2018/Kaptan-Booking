@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from 'src/app/shared/api.service';
 import { Airport, FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
@@ -19,9 +19,6 @@ export class IntroComponent implements OnInit {
   }
 
   form:FormGroup;
-  // "transfer_date_time": "2023-01-30 23:00:00",
-  // "number_of_passengers": 2,
-  // "price": 100,
 
   ngOnInit(): void {
     this.form = new FormGroup({

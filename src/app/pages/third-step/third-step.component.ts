@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from '../second-step/time-select/time-select.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Airport, FlightType } from 'src/app/shared/enums/enums';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from 'src/app/shared/api.service';
 import { DatePipe } from '@angular/common';
 import { ThemePalette } from '@angular/material/core';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-third-step',
@@ -17,7 +18,7 @@ import { ThemePalette } from '@angular/material/core';
 export class ThirdStepComponent {
   parent;
   form;
-  Airport = Airport;
+  Airport = {};
   
   constructor(
     private activedRoute:ActivatedRoute,
@@ -37,6 +38,8 @@ export class ThirdStepComponent {
     this.formGroup = this.form.controls.second;
     this.firstForm = this.form.controls.first;
 
+    this.Airport = this.apiService.assets['airportsEnum'];
+
     console.log(this.formGroup)
   }
 
@@ -48,14 +51,14 @@ export class ThirdStepComponent {
 
 
   
+  isSaving = false
   save() {
-    console.log(this.form);
     if(this.form.invalid) return;
+
+    this.isSaving = true;
 
     let value = {...this.form.value.first, ...this.form.value.second, guest_notes:this.form.value.guest_notes};
     value = JSON.parse(JSON.stringify(value));
-
-    console.log(value);
 
     value.passengers = value.passengers.map(p => {
       if(p.phone) {
@@ -75,16 +78,15 @@ export class ThirdStepComponent {
     value.number_of_passengers = value.passengers.length;
     value.price = this.apiService.selectedCar.price;
 
-    this.apiService
-    console.log(value);
 
-    this.apiService.saveOrder(value).subscribe( r => {
-      console.log(r);
-      this.router.navigate(['/order-sucess'], {replaceUrl: true})
+    this.apiService.saveOrder(value)
+    .pipe(
+      finalize(() => this.isSaving = false)
+    ).subscribe( r => {
+      this.form.reset();
+      this.router.navigate(['/order-sucess'], {replaceUrl: true});
     })
-    // if(this.form.valid) {
-    //   this.router.navigate(['/2'])
-    // }
+
   }
   
   openDialog() {

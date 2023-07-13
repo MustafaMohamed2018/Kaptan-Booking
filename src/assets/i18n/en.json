@@ -45,7 +45,11 @@
   "FromAirport":"From Airport",
   "ToAirport":"To Airport",
   "SelectAirport":"Select airport",
-  "Max":"Max"
+  "Max":"Max",
+  "Error500":"Internal Server Error",
+  "Error404":"Not Found",
+  "ErrorUnknown":"Unknown Error",
+  "Error0":"Unable to communicate with server"
 
 
 

@@ -2,10 +2,23 @@
     width: 95vw;
     display: block;
     max-width: 850px;
-    h2 {
-        font-size: 17px;
-        margin-top: 1rem;
+    .mat-mdc-dialog-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 26px;
+        padding-left: 40px;
+        padding-right: 40px;
+
+        &::before {
+            display: none;
+        }
+        h2 {
+            font-size: 17px;
+            margin-top: 1rem;
+        }
     }
+
     mat-calendar {
         max-width: 350px;
         margin: auto;

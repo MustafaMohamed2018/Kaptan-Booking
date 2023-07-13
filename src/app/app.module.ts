@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -12,6 +12,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorComponent } from './shared/error.component';
 import { AppRouteReuseStrategy } from './router-custome-strategy';
 import { RouteReuseStrategy } from '@angular/router';
+import { HttpConfigInterceptor } from './shared/http.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,6 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,7 +61,10 @@ export function createTranslateLoader(http: HttpClient) {
     }),
   ],
   providers: [
-    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy}
+    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy},
+    {
+      provide : HTTP_INTERCEPTORS , useClass: HttpConfigInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

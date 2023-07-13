@@ -49,7 +49,7 @@
                         {{ 'To' | translate }}
                     </span>
                     <p>
-                        {{ firstForm.value.deliveryLocation  }}
+                        {{ firstForm.value.delivery_location  }}
                     </p>
                 </div>
     
@@ -58,7 +58,8 @@
             
             <div class="passengers">
                 <mat-icon svgIcon="users"></mat-icon>
-                5 Passenger
+                {{ formGroup.controls.passengers.value?.length || 0 }}
+                {{ 'Passenger' | translate }}
             </div>
         </div>
 
@@ -111,16 +112,20 @@
     </mat-card>
 
     <form [formGroup]="form">
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="notes">
                 {{ 'NotesLabel' | translate }}
             </label>
             <textarea class="d-block" id="notes" name="notes" cols="30" rows="4" formControlName="guest_notes" [placeholder]="'AddNote' | translate"></textarea>
         </div>
 
-        <button mat-raised-button color="primary" class="d-block mb-3" (click)="save()">
-            {{ 'BookConfirmation' | translate }}
+        <button mat-raised-button color="primary" class="d-block mb-3"  color="primary" (click)="save()" [disabled]="isSaving">
+            <div class="d-flex align-items-center justify-content-center">
+                <mat-spinner class="me-3" diameter="30" strokeWidth="2" *ngIf="isSaving"></mat-spinner>
+                {{ 'BookConfirmation' | translate }}
+            </div>
         </button>
+
         <button mat-button type="button" class="d-block" routerLink="/2">
             <mat-icon>
                 keyboard_backspace
