@@ -16,7 +16,7 @@ export class AppComponent {
     private domSanitizer: DomSanitizer,
     private router:Router
   ) {
-    // this.router.navigate(['/']);
+    this.router.navigate(['/']);
     for(let icon of RegisteredIcons) {
       this.matIconRegistry.addSvgIcon(
         icon.name,

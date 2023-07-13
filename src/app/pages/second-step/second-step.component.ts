@@ -86,10 +86,6 @@ export class SecondStepComponent {
 
   }
   
-  openToggle(toggle) {
-    console.log(toggle)
-  }
-
   selectCar(car) {
     this.formGroup.controls.car_model_id.setValue(car.id);
     this.apiService.selectedCar = car;

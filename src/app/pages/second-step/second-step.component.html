@@ -70,6 +70,12 @@
         </div>
     </mat-list-item>
 
+    <div class="d-flex justify-content-center align-items-center mt-3" *ngIf="apiService.isGettingCars">
+        <mat-spinner class="me-3" diameter="30" strokeWidth="2" ></mat-spinner>
+        <h3>
+            Getting Cars Data
+        </h3>
+    </div>
     <mat-list>
         <mat-card matRipple *ngFor="let car of apiService.cars"
         [class.selected]="formGroup.controls.car_model_id.value == car.id"
@@ -121,7 +127,6 @@
     </mat-list>
 
 </mat-list>
-
 <div class="actions d-flex justify-content-between align-items-center ">
     <button mat-button routerLink="/1">
         {{ 'Previous' | translate }}

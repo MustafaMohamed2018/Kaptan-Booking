@@ -102,3 +102,9 @@ ngx-intl-tel-input {
     }
 }
 
+
+@media (max-width: 769px) {
+    mat-radio-group {
+        justify-content: flex-start !important;
+    }
+}

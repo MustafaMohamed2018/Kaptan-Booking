@@ -17,7 +17,7 @@ const routes: Routes = [
         component:FirstStepComponent,
         data:{
           step:1,
-          reuseComponent:true
+          // reuseComponent:true
         }
       },
       {
@@ -25,7 +25,7 @@ const routes: Routes = [
         component:SecondStepComponent,
         data:{
           step:2,
-          reuseComponent:true
+          // reuseComponent:true
         }
       },
       {
@@ -33,7 +33,7 @@ const routes: Routes = [
         component:PassengersComponent,
         data:{
           step:2,
-          reuseComponent:true
+          // reuseComponent:true
         }
       },
       {
@@ -41,7 +41,7 @@ const routes: Routes = [
         component: ThirdStepComponent,
         data:{
           step:3,
-          reuseComponent:true
+          // reuseComponent:true
         }
       },
       {

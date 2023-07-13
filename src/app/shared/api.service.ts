@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { combineLatest, skip, startWith } from 'rxjs';
+import { Observable, Subscription, combineLatest, finalize, skip, startWith } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +43,12 @@ export class ApiService {
   }
 
 
+  isGettingCars = false;
+  listenRequ:Subscription;
   listenToChanges(form:FormGroup) {
-    combineLatest([
+    if(this.listenRequ) this.listenRequ.unsubscribe();
+    
+    this.listenRequ = combineLatest([
       (form.controls.first as FormGroup).controls.type.valueChanges,
       (form.controls.second as FormGroup).controls.passengers.valueChanges
     ]).pipe(
@@ -66,10 +70,17 @@ export class ApiService {
       this.selectedCar = null;
       (form.controls.second as FormGroup).controls.car_model_id.setValue(null);
 
-      if(params.number_of_customer) this.getCars(params).subscribe(res => {
-        this.cars = res['data']['cars']
-        console.log(this.cars);
-      })
+      if(params.number_of_customer) {
+        this.isGettingCars = true;
+        this.getCars(params)
+        .pipe(
+          finalize(() => this.isGettingCars = false)
+        )
+        .subscribe(res => {
+          this.cars = res['data']['cars']
+          console.log(this.cars);
+        })
+      }
     });
   }
 }

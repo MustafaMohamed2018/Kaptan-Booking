@@ -83,7 +83,9 @@ export class ThirdStepComponent {
     .pipe(
       finalize(() => this.isSaving = false)
     ).subscribe( r => {
+      this.apiService.listenRequ.unsubscribe();
       this.form.reset();
+      this.apiService.selectedCar = [];
       this.router.navigate(['/order-sucess'], {replaceUrl: true});
     })
 
