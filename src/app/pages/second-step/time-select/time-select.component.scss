@@ -48,17 +48,23 @@
 @media (max-width: 991px) {
     :host {
         form {
-            .mat-mdc-dialog-title {
-                padding: 1rem 1rem .5rem;
-                
+            .mat-mdc-dialog-title {   
+                border-bottom: 1px solid #f9f8f8;
+                padding: 0.5rem 1rem 0.5rem;
             }
             h2 {
                 margin: 0 !important;
+                font-size: 16px !important;
+                line-height: 22px;
             }
             mat-dialog-content{
                 padding: 0 1rem 2rem;
+                mat-calendar {
+                    zoom: .9;
+                }
             }
             mat-dialog-actions {
+                border-top: 1px solid #f9f8f8;
                 padding-bottom: 1rem;
                 button.mdc-button {
                     width: 120px;

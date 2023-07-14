@@ -32,6 +32,10 @@
 h3 {
     font-size: 1rem;
     font-weight: normal;
+    &.no-cars {
+        font-size: 14px;
+        color: #1e1e1e;
+    }
 }
 mat-list {
     mat-list-item {

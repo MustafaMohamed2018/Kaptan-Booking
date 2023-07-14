@@ -74,7 +74,16 @@
             {{ 'GettingCarsData' | translate }}
         </h3>
     </div>
-    <mat-list>
+    <ng-template [ngIf]="!apiService.isGettingCars && !apiService.cars?.length" >
+        <h3 class="no-cars">
+            {{ 'NoCard' | translate }}
+        </h3>
+    </ng-template>
+    
+    <mat-list *ngIf="apiService.cars">
+        <div mat-subheader class="m-0">
+            {{ 'SelectCar' | translate }}
+        </div>
         <mat-card matRipple *ngFor="let car of apiService.cars"
         [class.selected]="formGroup.controls.car_model_id.value == car.id"
         (click)="selectCar(car)">
@@ -109,8 +118,6 @@
 
                         <!-- <span class="dot"></span> -->
 
-                        
-                        
                     </div>
 
                     <p class="price p-0 m-0" >

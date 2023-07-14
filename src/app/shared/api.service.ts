@@ -49,6 +49,7 @@ export class ApiService {
 
   isGettingCars = false;
   listenRequ:Subscription;
+  carsSubscription:Subscription;
   listenToChanges(form:FormGroup) {
     if(this.listenRequ) this.listenRequ.unsubscribe();
     
@@ -76,7 +77,8 @@ export class ApiService {
 
       if(params.number_of_customer) {
         this.isGettingCars = true;
-        this.getCars(params)
+        if(this.carsSubscription) this.carsSubscription.unsubscribe();
+        this.carsSubscription = this.getCars(params)
         .pipe(
           finalize(() => this.isGettingCars = false)
         )

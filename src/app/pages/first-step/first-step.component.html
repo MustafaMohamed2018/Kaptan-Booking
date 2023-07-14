@@ -41,7 +41,7 @@
         <label class="d-flex">
             {{ 'SelectAirport' | translate }}
         </label>
-        <mat-button-toggle-group formControlName="airport_id" class="row-btns" >
+        <mat-button-toggle-group formControlName="airport_id" class="row-btns airport-group" >
             <mat-button-toggle class="mb-3" *ngFor="let airport of apiService.assets.airports" [value]="airport.id">
                 <div class="content">
                     <span class="check-cont">
