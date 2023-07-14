@@ -122,7 +122,8 @@ export class SecondStepComponent {
     const dialogRef = this.dialog.open(TimeSelectComponent, {
       panelClass:'time-dialog',
       data,
-      maxWidth:'100%'
+      maxWidth:'100%',
+      disableClose:true
     });
 
     dialogRef.afterClosed().subscribe(result => {

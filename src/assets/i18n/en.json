@@ -50,7 +50,9 @@
   "Error404":"Not Found",
   "ErrorUnknown":"Unknown Error",
   "Error0":"Unable to communicate with server",
-  "GettingCarsData":"Getting Cars Data"
+  "GettingCarsData":"Getting Cars Data",
+  "NoCard":"We Couldn't Find Cars, Please Change Passengers Count Or The Date And Try Again.",
+  "SelectCar":"Please Select A Car"
 
 
 

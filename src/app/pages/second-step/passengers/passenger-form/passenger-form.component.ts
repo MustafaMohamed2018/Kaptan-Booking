@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
 import { Subscription, debounceTime } from 'rxjs';
@@ -9,7 +9,9 @@ import { Gender } from 'src/app/shared/enums/enums';
   templateUrl: './passenger-form.component.html',
   styleUrls: ['./passenger-form.component.scss']
 })
-export class PassengerFormComponent implements OnInit{
+export class PassengerFormComponent implements OnInit, AfterViewInit{
+  // @ViewChild('nameInput') nameInput:ElementRef<HTMLInputElement>;
+
   @Input('passengerForm') passengerForm;
   @Input('passengersList') passengersList = [];
   @Input('inEdit') inEdit = false;
@@ -36,7 +38,12 @@ export class PassengerFormComponent implements OnInit{
     }
     
   }
-
+  
+  ngAfterViewInit(): void {
+    // if(!this.passengersList.length) {
+    //   this.nameInput.nativeElement.focus();
+    // }
+  }
 
   submit(f) {
     console.log(this.passengerForm)

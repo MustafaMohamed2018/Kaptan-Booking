@@ -138,6 +138,7 @@ form {
 
 @media (max-width: 991px) {
     form {
+        margin: 0;
         mat-button-toggle-group.type {
             display: flex;
             flex-wrap: wrap;
@@ -154,8 +155,8 @@ form {
                     width: 100%;
                     display: flex;
                     align-items: center;
-                    padding-left: 12px;
-                    padding-right: 12px;
+
+                    padding: 9px 12px;
                     .d-flex {
                         flex-direction: row-reverse;
                         justify-content: flex-start !important;
@@ -167,6 +168,13 @@ form {
                         margin-top: 0;
                     }
                 }
+            }
+        }
+
+        .airport-group {
+            flex-wrap: nowrap !important;
+            mat-button-toggle:first-of-type {
+                margin-right: 16px;
             }
         }
     }
