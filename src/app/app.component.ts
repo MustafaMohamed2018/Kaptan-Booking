@@ -22,7 +22,7 @@ export class AppComponent {
     this.apiService.domainName = (window.location.href || '')?.split("?")[1]?.split("=")[1];
     this.apiService.api = this.apiService.baseUrl + this.apiService.domainName + '/';
     
-    // this.router.navigate(['/'], {queryParams:{slug:this.apiService.domainName}});
+    this.router.navigate(['/'], {queryParams:{slug:this.apiService.domainName}});
 
     for(let icon of RegisteredIcons) {
       this.matIconRegistry.addSvgIcon(
