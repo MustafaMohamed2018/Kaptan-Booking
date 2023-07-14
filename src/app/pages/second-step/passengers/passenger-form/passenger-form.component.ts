@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
 import { Subscription, debounceTime } from 'rxjs';
 import { Gender } from 'src/app/shared/enums/enums';
@@ -19,6 +20,11 @@ export class PassengerFormComponent implements OnInit, AfterViewInit{
   @Output('btnClicked') btnClicked = new EventEmitter();
   Gender = Gender;
   
+  constructor(
+    private router:Router
+  ) {
+
+  }
 
   separateDialCode = false;
 	SearchCountryField = SearchCountryField;
@@ -43,6 +49,15 @@ export class PassengerFormComponent implements OnInit, AfterViewInit{
     // if(!this.passengersList.length) {
     //   this.nameInput.nativeElement.focus();
     // }
+  }
+
+  routeNext() {
+    if(this.passengerForm.valid) {
+      if(this.subsciption) this.subsciption.unsubscribe();
+      this.btnClicked.emit(true);
+    }
+    this.router.navigate(['/2'])
+    // routerLink="/2"
   }
 
   submit(f) {

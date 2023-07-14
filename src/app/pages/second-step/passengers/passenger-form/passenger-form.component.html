@@ -45,7 +45,7 @@
             </button>
 
 
-            <button type="button" mat-raised-button class="submit-btn" color="primary" [disabled]="!passengersList.length" routerLink="/2">
+            <button type="button" mat-raised-button class="submit-btn" color="primary" [disabled]="!passengersList.length" (click)="routeNext()">
                 {{ 'Next' | translate }}
             </button>
         </div>
