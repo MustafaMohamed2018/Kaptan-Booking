@@ -40,7 +40,6 @@ export class TimeSelectComponent implements OnInit{
     });
   }
 
-
   changeDateTime() {
     this.form.controls['date'].setValue(this.data.date)
     this.form.controls['time'].setValue(this.data.time)

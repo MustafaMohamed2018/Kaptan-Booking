@@ -19,6 +19,14 @@
         }
     }
 
+    input[type="time"] {
+        min-width: 200px;
+        max-width: 200px;
+        width: 200px;
+        margin: 1rem auto 0;
+        display: block;
+    }
+
     mat-calendar {
         max-width: 350px;
         margin: auto;

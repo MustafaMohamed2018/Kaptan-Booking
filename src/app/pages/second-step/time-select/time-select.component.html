@@ -16,13 +16,17 @@
                     <input [hidden]="true" formControlName="date" type="text">
                 </div>
     
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 d-md-block d-none form-group">
                     <ngx-mat-clock-timepicker
                     #timepicker
                     [defaultTime]="data.time"
                     [enableKeyboardInput]="true"
                     (timeChanged)="data.time = $event;changeDateTime()" [format]="24"></ngx-mat-clock-timepicker>  
                     <input [hidden]="true" formControlName="time" type="text">
+                </div>
+
+                <div class="col-12 d-md-none">
+                    <input type="time" formControlName="time" (change)="data.time = $event.target['value'] ">
                 </div>
             </div>
         </section>
