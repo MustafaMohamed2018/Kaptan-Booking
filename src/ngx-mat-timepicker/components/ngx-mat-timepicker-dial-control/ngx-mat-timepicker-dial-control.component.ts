@@ -42,12 +42,15 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
     @Output() timeChanged = new EventEmitter<NgxMatTimepickerClockFace>();
 
     @Input() timeList: NgxMatTimepickerClockFace[];
+    
+    @Input() max:number;
 
     @Input() timeUnit: NgxMatTimepickerUnits;
 
     @Output() timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
 
     @Output() unfocused = new EventEmitter<void>();
+
 
     constructor(private _elRef: ElementRef, private _timeParserPipe: NgxMatTimepickerParserPipe) {
     }

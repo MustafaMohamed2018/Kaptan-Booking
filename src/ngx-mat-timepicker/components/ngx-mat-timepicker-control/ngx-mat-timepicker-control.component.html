@@ -13,7 +13,7 @@
            (keydown)="onKeydown($event)"
            (beforeinput)="changeTime($event)"
            (focus)="onFocus()"
-           (blur)="onBlur()" />
+           (blur)="onBlur()" [min]="min" [max]="max" type="number" />
     <div class="arrows-wrap"
          matSuffix>
         <span class="arrow"

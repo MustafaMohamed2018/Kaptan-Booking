@@ -9,7 +9,7 @@
                                          (timeUnitChanged)="changeTimeUnit($event)"
                                          (timeChanged)="changeHour($event)"
                                          (focused)="showHint()"
-                                         (unfocused)="hideHint()">
+                                         (unfocused)="hideHint()"  [max]="23">
 
             </ngx-mat-timepicker-dial-control>
 
@@ -25,7 +25,7 @@
                                          (timeUnitChanged)="changeTimeUnit($event)"
                                          (timeChanged)="changeMinute($event)"
                                          (focused)="showHint()"
-                                         (unfocused)="hideHint()">
+                                         (unfocused)="hideHint()"  [max]="59">
 
             </ngx-mat-timepicker-dial-control>
         </div>

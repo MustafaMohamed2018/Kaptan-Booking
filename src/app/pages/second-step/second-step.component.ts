@@ -115,9 +115,19 @@ export class SecondStepComponent {
     else {
       date.setDate(date.getDate() + 1)
     }
+
+    let time = this.formGroup.controls['time'].value
+    if(!time) {
+      let clock = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
+      let timeArr = clock.split(':');
+      if(timeArr[0] == '24') timeArr[0] = '00';
+      time = timeArr.join(':')
+    }
+   
     let data = {
       date: date,
-      time: this.formGroup.controls['time'].value || new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
+      // time: this.formGroup.controls['time'].value || new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
+      time: time
     }
     const dialogRef = this.dialog.open(TimeSelectComponent, {
       panelClass:'time-dialog',
