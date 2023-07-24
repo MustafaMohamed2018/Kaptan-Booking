@@ -181,7 +181,10 @@ mat-card {
 }
 
 .actions {
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1.5px solid #ededed;
     button {
         height: 56px;
         width: 150px;
@@ -192,5 +195,17 @@ mat-card {
             border: 1px solid #707070;
             color: #707070;
         }
+    }
+}
+
+.page-container {
+    height: calc(100vh - 225px);
+    overflow: auto;
+    padding-right: 8px;
+}
+
+@media (max-width: 991px) {
+    .page-container {
+        height: calc(100vh - 193px);
     }
 }
