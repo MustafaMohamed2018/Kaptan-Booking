@@ -1,138 +1,141 @@
-<div class="mt-4 airport-info mb-3 d-flex  justify-content-between">
-    <div>
-        <span>
-            {{ 'From' | translate }}
-        </span>
-        <p>
-            {{ Airport[firstForm.value.airport_id] | translate  }}
-        </p>
+<div class="page-container">
+    <div class="mt-4 airport-info mb-3 d-flex  justify-content-between">
+        <div>
+            <span>
+                {{ 'From' | translate }}
+            </span>
+            <p>
+                {{ Airport[firstForm.value.airport_id] | translate  }}
+            </p>
+        </div>
+        <mat-icon svgIcon="arrows"></mat-icon>
+        <div>
+            <span>
+                {{ 'To' | translate }}
+            </span>
+            <p>
+                {{ firstForm.value.delivery_location  }}
+            </p>
+        </div>
     </div>
-    <mat-icon svgIcon="arrows"></mat-icon>
-    <div>
-        <span>
-            {{ 'To' | translate }}
-        </span>
-        <p>
-            {{ firstForm.value.delivery_location  }}
-        </p>
-    </div>
+    
+    <mat-list>
+        <mat-list-item matRipple class="d-flex" (click)="openDialog()">
+            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between"> 
+                <span>
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+                </span>
+                <mat-icon>
+                    chevron_right
+                </mat-icon>
+            </div>
+        </mat-list-item>
+    
+    
+        <!-- <div class="hidden-input-cont" [formGroup]="formGroup">
+            <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
+            <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
+        </div>
+    
+        <mat-list-item class="d-lg-none" matRipple>
+            <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+            <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between"> 
+                <span>
+                    {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
+                </span>
+                <mat-icon>
+                    chevron_right
+                </mat-icon>
+            </div>
+        </mat-list-item> -->
+    
+    
+        <mat-divider></mat-divider>
+        <mat-list-item matRipple routerLink="/add-passenger">
+            <mat-icon matListItemIcon svgIcon="users"></mat-icon>
+            <div matListItemTitle class="d-flex justify-content-between passengers"> 
+                <span>
+                    {{ formGroup.controls.passengers.value?.length || 0 }}
+                    {{ 'Passenger' | translate }}
+                </span>
+                <mat-icon>
+                    chevron_right
+                </mat-icon>
+            </div>
+            <div matListItemLine>
+                {{ 'AddPassengersNumbers' | translate }}
+            </div>
+        </mat-list-item>
+    
+        <div class="d-flex justify-content-center align-items-center mt-3" *ngIf="apiService.isGettingCars">
+            <mat-spinner class="me-3" diameter="30" strokeWidth="2" ></mat-spinner>
+            <h3>
+                {{ 'GettingCarsData' | translate }}
+            </h3>
+        </div>
+        <ng-template [ngIf]="!apiService.isGettingCars && !apiService.cars?.length" >
+            <h3 class="no-cars">
+                {{ 'NoCard' | translate }}
+            </h3>
+        </ng-template>
+        
+        <mat-list *ngIf="apiService.cars">
+            <div mat-subheader class="m-0">
+                {{ 'SelectCar' | translate }}
+            </div>
+            <mat-card matRipple *ngFor="let car of apiService.cars"
+            [class.selected]="formGroup.controls.car_model_id.value == car.id"
+            (click)="selectCar(car)">
+                <mat-card-content>
+                    <img mat-card-sm-image [src]="car.image" loading="lazy">
+    
+                    <div>
+                        <h3 class="d-flex align-items-center justify-content-between">
+                            {{ car.name }}
+                            <!-- <span>
+                                <mat-icon>airport_shuttle</mat-icon>
+                                {{car.type}}
+                            </span> -->
+                        </h3>
+                        <p>
+                            {{ car.description }}
+                        </p>
+                        <div class="details">
+                            <span>
+                                <mat-icon svgIcon="users"></mat-icon>
+                                {{  'Max' | translate }} 
+                                {{ car.max_seats }}
+                            </span>
+    
+                            <span class="dot"></span>
+    
+                            <span>
+                                <mat-icon >business_center</mat-icon>
+                                {{  'Max' | translate }} 
+                                {{ car.max_bags }}
+                            </span>
+    
+                            <!-- <span class="dot"></span> -->
+    
+                        </div>
+    
+                        <p class="price p-0 m-0" >
+                            <span>
+                                {{ car.price }}
+                            </span>
+                            {{car.currency}}
+                        </p>
+                    </div>
+    
+                </mat-card-content>
+            </mat-card>
+        </mat-list>
+    
+    </mat-list>
 </div>
 
-<mat-list>
-    <mat-list-item matRipple class="d-flex" (click)="openDialog()">
-        <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
-        <div matListItemTitle class="d-flex justify-content-between"> 
-            <span>
-                {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
-            </span>
-            <mat-icon>
-                chevron_right
-            </mat-icon>
-        </div>
-    </mat-list-item>
-
-
-    <!-- <div class="hidden-input-cont" [formGroup]="formGroup">
-        <input  #dateInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="formGroup.controls['date']" [min]="minDate">
-        <ngx-mat-datetime-picker #picker [showSeconds]="false"  [touchUi]="false" (closed)="closedDate()" [color]="color"> </ngx-mat-datetime-picker>
-    </div>
-
-    <mat-list-item class="d-lg-none" matRipple>
-        <mat-datepicker-toggle #toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-        <mat-icon matListItemIcon svgIcon="calendar-clock"></mat-icon>
-        <div matListItemTitle class="d-flex justify-content-between"> 
-            <span>
-                {{ formGroup.controls['date'].value ? ((formGroup.controls['date'].value | date:'dd MMM yyyy') + ' ' + formGroup.controls['time'].value) : ('AddDate' | translate) }}
-            </span>
-            <mat-icon>
-                chevron_right
-            </mat-icon>
-        </div>
-    </mat-list-item> -->
-
-
-    <mat-divider></mat-divider>
-    <mat-list-item matRipple routerLink="/add-passenger">
-        <mat-icon matListItemIcon svgIcon="users"></mat-icon>
-        <div matListItemTitle class="d-flex justify-content-between passengers"> 
-            <span>
-                {{ formGroup.controls.passengers.value?.length || 0 }}
-                {{ 'Passenger' | translate }}
-            </span>
-            <mat-icon>
-                chevron_right
-            </mat-icon>
-        </div>
-        <div matListItemLine>
-            {{ 'AddPassengersNumbers' | translate }}
-        </div>
-    </mat-list-item>
-
-    <div class="d-flex justify-content-center align-items-center mt-3" *ngIf="apiService.isGettingCars">
-        <mat-spinner class="me-3" diameter="30" strokeWidth="2" ></mat-spinner>
-        <h3>
-            {{ 'GettingCarsData' | translate }}
-        </h3>
-    </div>
-    <ng-template [ngIf]="!apiService.isGettingCars && !apiService.cars?.length" >
-        <h3 class="no-cars">
-            {{ 'NoCard' | translate }}
-        </h3>
-    </ng-template>
-    
-    <mat-list *ngIf="apiService.cars">
-        <div mat-subheader class="m-0">
-            {{ 'SelectCar' | translate }}
-        </div>
-        <mat-card matRipple *ngFor="let car of apiService.cars"
-        [class.selected]="formGroup.controls.car_model_id.value == car.id"
-        (click)="selectCar(car)">
-            <mat-card-content>
-                <img mat-card-sm-image [src]="car.image" loading="lazy">
-
-                <div>
-                    <h3 class="d-flex align-items-center justify-content-between">
-                        {{ car.name }}
-                        <!-- <span>
-                            <mat-icon>airport_shuttle</mat-icon>
-                            {{car.type}}
-                        </span> -->
-                    </h3>
-                    <p>
-                        {{ car.description }}
-                    </p>
-                    <div class="details">
-                        <span>
-                            <mat-icon svgIcon="users"></mat-icon>
-                            {{  'Max' | translate }} 
-                            {{ car.max_seats }}
-                        </span>
-
-                        <span class="dot"></span>
-
-                        <span>
-                            <mat-icon >business_center</mat-icon>
-                            {{  'Max' | translate }} 
-                            {{ car.max_bags }}
-                        </span>
-
-                        <!-- <span class="dot"></span> -->
-
-                    </div>
-
-                    <p class="price p-0 m-0" >
-                        <span>
-                            {{ car.price }}
-                        </span>
-                        {{car.currency}}
-                    </p>
-                </div>
-
-            </mat-card-content>
-        </mat-card>
-    </mat-list>
-
-</mat-list>
 <div class="actions d-flex justify-content-between align-items-center ">
     <button mat-button routerLink="/1">
         {{ 'Previous' | translate }}
