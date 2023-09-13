@@ -5,7 +5,8 @@
                 {{ 'From' | translate }}
             </span>
             <p>
-                {{ Airport[firstForm.value.airport_id] | translate  }}
+                <!-- {{ Airport[firstForm.value.airport_id] | translate  }} -->
+                {{ firstForm.value.type == FlightType.FromAirPort ? (Airport[firstForm.value.airport_id] | translate) : firstForm.value.delivery_location  }}
             </p>
         </div>
         <mat-icon svgIcon="arrows"></mat-icon>
@@ -14,7 +15,8 @@
                 {{ 'To' | translate }}
             </span>
             <p>
-                {{ firstForm.value.delivery_location  }}
+                {{ firstForm.value.type == FlightType.FromAirPort ? firstForm.value.delivery_location : (Airport[firstForm.value.airport_id] | translate)   }}
+                <!-- {{ firstForm.value.delivery_location  }} -->
             </p>
         </div>
     </div>

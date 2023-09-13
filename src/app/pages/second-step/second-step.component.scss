@@ -182,7 +182,7 @@ mat-card {
 
 .actions {
     // margin-bottom: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     padding-top: 0.5rem;
     border-top: 1.5px solid #ededed;
     button {
@@ -206,6 +206,8 @@ mat-card {
 
 @media (max-width: 991px) {
     .page-container {
-        height: calc(100vh - 193px);
+        // height: calc(100vh - 193px);
+        height: calc(100vh - 209px);
+        
     }
 }

@@ -31,7 +31,8 @@ export class ThirdStepComponent {
       this.parent.step = this.activedRoute.snapshot.data.step
     })
   }
-
+  FlightType = FlightType;
+  
   formGroup:FormGroup | any;
   firstForm;
   ngOnInit(): void {

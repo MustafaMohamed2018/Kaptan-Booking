@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TimeSelectComponent } from './time-select/time-select.component';
 import { ApiService } from 'src/app/shared/api.service';
 import { ThemePalette } from '@angular/material/core';
+import { FlightType } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-second-step',
@@ -15,7 +16,8 @@ import { ThemePalette } from '@angular/material/core';
 export class SecondStepComponent {
   parent
   Airport = {};
-  
+  FlightType = FlightType;
+
   constructor(
     private router:Router,
     private dialog:MatDialog,
