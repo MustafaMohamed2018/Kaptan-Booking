@@ -2,6 +2,13 @@
     width: 95vw;
     display: block;
     max-width: 850px;
+    mat-stepper {
+        ::ng-deep {
+            .mat-horizontal-stepper-header-container {
+                display: none;
+            }
+        }
+    }
     .mat-mdc-dialog-title {
         display: flex;
         align-items: center;
@@ -32,9 +39,14 @@
         margin: auto;
         margin-top: -16px;
     }
-    mat-dialog-actions {
+    .action-btns {
         justify-content: center;
-        padding: 8px 18px 30px;
+        // padding: 8px 18px 30px;
+
+        padding-bottom: 1rem;
+        margin-bottom: -2rem;
+        margin-top: 1.5rem;
+
         button {
             width: 158px;
             height: 48px;
@@ -66,14 +78,15 @@
                 line-height: 22px;
             }
             mat-dialog-content{
-                padding: 0 1rem 2rem;
+                // padding: 0 1rem 2rem;
+                padding: 0 1rem 1rem;
                 mat-calendar {
                     zoom: .9;
                 }
             }
-            mat-dialog-actions {
+            .action-btns {
                 border-top: 1px solid #f9f8f8;
-                padding-bottom: 1rem;
+                // padding-bottom: 1rem;
                 button.mdc-button {
                     width: 120px;
                 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
@@ -8,6 +8,8 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
   styleUrls: ['./time-select.component.scss']
 })
 export class TimeSelectComponent implements OnInit{
+  @ViewChild('timepicker') timepicker;
+
   min = new Date();
 
   constructor(
@@ -51,7 +53,7 @@ export class TimeSelectComponent implements OnInit{
     this.dialogRef.close(this.data)
   }
   
-  reset(timepicker) {
+  reset() {
     const currentDate = new Date();
     let clock = currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false });
 
@@ -67,7 +69,7 @@ export class TimeSelectComponent implements OnInit{
 
     this.form.controls['time'].setValue(clock);
 
-    timepicker.updateTime(clock);
+    if(this.timepicker) this.timepicker.updateTime(clock);
   }
 
 }

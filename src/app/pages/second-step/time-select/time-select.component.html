@@ -3,13 +3,50 @@
         <h2>
             {{ 'IndicateTimeAndDate' | translate }}
         </h2>
-        <button mat-icon-button  mat-dialog-close>
+        <button mat-icon-button mat-dialog-close>
             <mat-icon>close</mat-icon>
         </button>
     </div>
 
     <mat-dialog-content class="mat-typography">
-        <section>
+        <mat-stepper linear #stepper>
+            <mat-step [stepControl]="form.controls.date" errorMessage="Date is required.">
+                <ng-template matStepLabel>Date</ng-template>
+
+                <mat-calendar [minDate]="min" [(selected)]="data.date"
+                    (selectedChange)="changeDateTime()"></mat-calendar>
+                <input [hidden]="true" formControlName="date" type="text">
+                <div class="d-flex  action-btns">
+                    <button mat-raised-button matStepperNext cdkFocusInitial color="primary" type="button">
+                        {{ 'Next' | translate }}
+                    </button>
+                    <button mat-button type="button" (click)="reset()">
+                        {{ 'Re-Set' | translate }}
+                    </button>
+                </div>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Time</ng-template>
+
+                <ngx-mat-clock-timepicker *ngIf="stepper.selectedIndex == 1"  #timepicker [defaultTime]="data.time" [enableKeyboardInput]="true"
+                    (timeChanged)="data.time = $event;changeDateTime()" [format]="24"></ngx-mat-clock-timepicker>
+
+                <div class="d-flex action-btns">
+                    <!-- <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button> -->
+
+                    <button mat-raised-button cdkFocusInitial color="primary">
+                        {{ 'Save' | translate }}
+                    </button>
+                    <button mat-button type="button" matStepperPrevious>
+                        {{ 'Back' | translate }}
+                    </button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+
+        <!-- <section>
             <div class="row">
                 <div class="col-md-6">
                     <mat-calendar [minDate]="min" [(selected)]="data.date" (selectedChange)="changeDateTime()"></mat-calendar>
@@ -29,14 +66,14 @@
                     <input type="time" formControlName="time" (change)="data.time = $event.target['value'] ">
                 </div>
             </div>
-        </section>
+        </section> -->
     </mat-dialog-content>
-    <mat-dialog-actions >
+    <!-- <mat-dialog-actions >
         <button mat-raised-button cdkFocusInitial color="primary">
             {{ 'Save' | translate }}
         </button>
         <button mat-button type="button" (click)="reset(timepicker)">
             {{ 'Re-Set' | translate }}
         </button>
-    </mat-dialog-actions>
+    </mat-dialog-actions> -->
 </form>

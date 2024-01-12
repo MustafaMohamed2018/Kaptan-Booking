@@ -25,6 +25,7 @@ import { ThirdStepComponent } from './third-step/third-step.component';
 // import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { OrderSucessComponent } from './order-sucess/order-sucess.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     // NgxMatTimepickerModule,
     // NgxMatNativeDateModule,
 
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule
     // NgxMatIntlTelInputComponent
   ]
 })
